@@ -18,6 +18,7 @@
 *{box-sizing:border-box}
 body{font-family:system-ui,Roboto,"Noto Sans JP",sans-serif;line-height:1.7;margin:0;background:var(--paper);color:var(--ink)}
 a{color:inherit;text-decoration:none;}
+body.no-scroll{overflow:hidden;} /* ライトボックス中のスクロール禁止 */
 
 /* ヘッダー */
 header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
@@ -33,7 +34,7 @@ nav a:focus-visible, a:focus-visible{outline:2px solid var(--accent);outline-off
 /* メイン構造 */
 main{max-width:var(--max);margin:2rem auto;padding:0 1rem}
 section{padding:2rem 0;border-top:1px solid var(--line);transition:background .3s ease}
-section:hover{background:rgba(22,163,74,.03)} /* セクション全体がほんのり緑になる */
+section:hover{background:rgba(22,163,74,.03)}
 
 h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.2rem 0}
 h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
@@ -41,29 +42,15 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 /* ヒーローブロック（写真 + 見出し） */
 .hero{
   display:grid;
-  grid-template-columns:200px 1fr; /* プロフィール画像を約2倍に拡大 */
+  grid-template-columns:200px 1fr; /* プロフィール画像拡大 */
   gap:2rem;
   align-items:center;
 }
 .avatar{
-  width:200px;
-  height:200px;
-  border-radius:20px;
-  overflow:hidden;
-  border:2px solid var(--line);
-  background:#fafafa;
-  display:block;
-  transition:transform .3s ease, border-color .3s ease;
+  width:200px;height:200px;border-radius:20px;overflow:hidden;border:2px solid var(--line);
+  background:#fafafa;display:block;user-select:none;pointer-events:none; /* 触っても何も起きない */
 }
-.avatar img{
-  width:100%;
-  height:100%;
-  object-fit:cover;
-}
-.avatar:hover{
-  transform:scale(1.03);
-  border-color:var(--accent);
-}
+.avatar img{width:100%;height:100%;object-fit:cover}
 
 /* 小さな補助テキスト + 緑のアクセントドット */
 .small{font-size:.9rem;color:var(--muted)}
@@ -78,8 +65,6 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
   background:#fff;
   transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
 }
-
-/* カードホバー時（ふわっと浮いて緑に） */
 .card:hover, .card:active{
   transform:translateY(-4px);
   border-color:var(--accent);
@@ -88,14 +73,8 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 
 /* 作品カード：画像＋情報 */
 .thumb{
-  width:100%;
-  aspect-ratio:4/3;
-  object-fit:cover;
-  border-radius:8px;
-  border:1px solid var(--line);
-  background:#f7f7f7;
-  display:block;
-  margin-bottom:.75rem;
+  width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--line);
+  background:#f7f7f7;display:block;margin-bottom:.75rem;cursor:zoom-in;
 }
 .meta{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.5rem}
 .badge{
@@ -110,12 +89,57 @@ hr{border:none;border-top:2px solid rgba(22,163,74,.2);margin:1.5rem 0}
 /* フッター */
 footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(--line)}
 
+/* ========= ライトボックス（拡大表示 + 矢印 + キャプション） ========= */
+.lightbox{
+  position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.8);
+  z-index:1000;padding:2vw;
+}
+.lightbox.open{display:grid;}
+
+.lb-frame{position:relative;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.lb-img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.lb-caption{
+  color:#f3f3f3;font-size:.95rem;line-height:1.5;text-align:center;
+  background:rgba(0,0,0,.35);padding:.5rem .8rem;border-radius:8px;max-width:min(92vw,820px)
+}
+
+/* 閉じるボタン（白い×） */
+.lightbox-close{
+  position:fixed;top:16px;right:16px;z-index:1001;
+  width:40px;height:40px;border-radius:999px;border:none;background:rgba(255,255,255,.95);
+  color:#111;font-size:22px;line-height:40px;text-align:center;cursor:pointer;
+  box-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.lightbox-close:hover{background:#fff}
+
+/* 前後矢印 */
+.lb-nav{
+  position:absolute;inset:0;pointer-events:none; /* 画像の左右に重ねるレイヤ */
+}
+.lb-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  pointer-events:auto;cursor:pointer;border:none;border-radius:999px;
+  width:46px;height:46px;background:rgba(255,255,255,.92);color:#111;font-size:22px;
+  display:grid;place-items:center;box-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.lb-arrow:hover{background:#fff}
+.lb-prev{left:-58px}
+.lb-next{right:-58px}
+
+/* 画面が狭いとき矢印を内側に */
+@media (max-width:900px){
+  .lb-prev{left:8px}
+  .lb-next{right:8px}
+}
+
 /* スマホ最適化 */
 @media (max-width:640px){
   nav{flex-wrap:wrap}
   .hero{grid-template-columns:120px 1fr;gap:1rem;}
   .avatar{width:120px;height:120px;border-radius:14px;}
   section{padding:1.6rem 0}
+  .lightbox-close{top:10px;right:10px;width:36px;height:36px;font-size:20px;line-height:36px;}
+  .lb-arrow{width:40px;height:40px;font-size:20px}
 }
 </style>
 </head>
@@ -135,9 +159,10 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 <main>
   <section id="home">
     <div class="hero">
-      <a class="avatar" href="#contact" aria-label="Rikuou Yokosawa">
-        <img src="assets/profile.jpg" alt="Portrait of Rikuou Yokosawa">
-      </a>
+      <!-- プロフィール画像（非インタラクティブ） -->
+      <div class="avatar" role="img" aria-label="Portrait of Rikuou Yokosawa">
+        <img src="assets/profile.jpg" alt="">
+      </div>
       <div>
         <h1>あいうえお</h1>
         <p class="small"><span class="dot" aria-hidden="true"></span>???</p>
@@ -149,8 +174,11 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     <h2>Art Works</h2>
 
     <div class="grid">
+      <!-- 作品カード例：data-caption にキャプション -->
       <article class="card">
-        <img class="thumb" src="assets/artwork-001.jpg" alt="タイトル（F6, 2025）">
+        <img class="thumb" src="assets/artwork-001.jpg"
+             alt="タイトル（F6, 2025）の全体像"
+             data-caption="タイトル / 2025 / F6 — 油彩／キャンバス。色面と筆致のコントラストを強調したシリーズ。">
         <strong>タイトル</strong><br>
         <span class="small">2025 / F6</span>
         <div class="meta">
@@ -159,7 +187,9 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
       </article>
 
       <article class="card">
-        <img class="thumb" src="assets/artwork-002.jpg" alt="作品タイトル（F4, 2025）">
+        <img class="thumb" src="assets/artwork-002.jpg"
+             alt="作品タイトル（F4, 2025）の全体像"
+             data-caption="作品タイトル / 2025 / F4 — 小作品。nhr-76とODR-10モチーフの構図を再解釈。">
         <strong>作品タイトル</strong><br>
         <span class="small">2025 / F4</span>
         <div class="meta">
@@ -167,9 +197,11 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
+
+      <!-- 以降、同じ要領で .thumb に data-caption を加えるだけ -->
     </div>
 
-    <p class="small">画像は <code>assets/</code> に置いて、上の <code>src</code> を差し替えるだけ。</p>
+    <p class="small">画像は <code>assets/</code> に置き、各 <code>.thumb</code> に <code>data-caption</code> を足すと拡大時にキャプションが表示されます。</p>
   </section>
 
   <section id="research">
@@ -197,5 +229,129 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 </main>
 
 <footer>Thank you for reaching this far.</footer>
+
+<!-- ========== ライトボックス ========== -->
+<div class="lightbox" id="lightbox" aria-modal="true" role="dialog" aria-label="Artwork preview">
+  <button class="lightbox-close" id="lightboxClose" aria-label="閉じる">×</button>
+
+  <div class="lb-frame">
+    <div class="lb-nav" aria-hidden="true">
+      <button class="lb-arrow lb-prev" id="lbPrev" aria-label="前の作品">‹</button>
+      <button class="lb-arrow lb-next" id="lbNext" aria-label="次の作品">›</button>
+    </div>
+    <img class="lb-img" id="lightboxImg" alt="">
+    <div class="lb-caption" id="lightboxCaption"></div>
+  </div>
+</div>
+
+<script>
+(() => {
+  const thumbs = Array.from(document.querySelectorAll('.thumb'));
+  const lightbox = document.getElementById('lightbox');
+  const imgEl = document.getElementById('lightboxImg');
+  const capEl = document.getElementById('lightboxCaption');
+  const btnClose = document.getElementById('lightboxClose');
+  const btnPrev = document.getElementById('lbPrev');
+  const btnNext = document.getElementById('lbNext');
+
+  let current = -1; // 現在表示中のインデックス
+  let touchStartX = 0, touchEndX = 0;
+
+  // アクセシビリティ：各thumbにキーボード操作を付与
+  thumbs.forEach((img, idx) => {
+    img.setAttribute('tabindex','0');
+    img.setAttribute('role','button');
+    if(!img.getAttribute('aria-label')){
+      img.setAttribute('aria-label', (img.alt || 'Artwork') + ' を拡大表示');
+    }
+    img.addEventListener('click', () => openAt(idx));
+    img.addEventListener('keyup', e => {
+      if(e.key === 'Enter' || e.key === ' ') openAt(idx);
+    });
+  });
+
+  function openAt(index){
+    current = index;
+    const t = thumbs[current];
+    show(t.src, t.alt, t.dataset.caption || '');
+    lightbox.classList.add('open');
+    document.body.classList.add('no-scroll');
+    // 初期フォーカスを閉じるボタンへ
+    btnClose.focus();
+  }
+
+  function show(src, alt, caption){
+    imgEl.src = src;
+    imgEl.alt = alt || '';
+    capEl.textContent = caption || '';
+    // 前後矢印の有効/無効（ループにするので常に有効）
+  }
+
+  function close(){
+    lightbox.classList.remove('open');
+    document.body.classList.remove('no-scroll');
+    setTimeout(() => { imgEl.src = ''; capEl.textContent=''; }, 120);
+    // 元のサムネにフォーカスを戻す
+    if(current >= 0 && thumbs[current]) thumbs[current].focus();
+    current = -1;
+  }
+
+  function next(){
+    if(thumbs.length === 0) return;
+    current = (current + 1) % thumbs.length;
+    const t = thumbs[current];
+    show(t.src, t.alt, t.dataset.caption || '');
+  }
+
+  function prev(){
+    if(thumbs.length === 0) return;
+    current = (current - 1 + thumbs.length) % thumbs.length;
+    const t = thumbs[current];
+    show(t.src, t.alt, t.dataset.caption || '');
+  }
+
+  // ボタン操作
+  btnClose.addEventListener('click', close);
+  btnNext.addEventListener('click', next);
+  btnPrev.addEventListener('click', prev);
+
+  // キーボード操作
+  document.addEventListener('keydown', e => {
+    if(!lightbox.classList.contains('open')) return;
+    if(e.key === 'Escape') close();
+    if(e.key === 'ArrowRight') next();
+    if(e.key === 'ArrowLeft') prev();
+  });
+
+  // オーバーレイ（黒背景）クリックで閉じる
+  lightbox.addEventListener('click', e => {
+    // 画像や矢印のクリックは除外（.lb-frame の外側のみで閉じる）
+    const frame = e.target.closest('.lb-frame');
+    if(!frame) close();
+  });
+
+  // スワイプ（モバイル）
+  lightbox.addEventListener('touchstart', e => {
+    if(e.touches.length === 1){
+      touchStartX = e.touches[0].clientX;
+    }
+  }, {passive:true});
+
+  lightbox.addEventListener('touchmove', e => {
+    if(e.touches.length === 1){
+      touchEndX = e.touches[0].clientX;
+    }
+  }, {passive:true});
+
+  lightbox.addEventListener('touchend', () => {
+    const dx = touchEndX - touchStartX;
+    const threshold = 50; // スワイプ判定しきい値
+    if(Math.abs(dx) > threshold){
+      if(dx < 0){ next(); } else { prev(); }
+    }
+    touchStartX = touchEndX = 0;
+  });
+})();
+</script>
 </body>
 </html>
