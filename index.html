@@ -117,6 +117,20 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
   width:100%;aspect-ratio:4/3;border-radius:8px;border:1px solid var(--accent);background:var(--accent);margin-bottom:.75rem;
 }
 
+/* Art Worksの奇数埋めパネル（PCのみ表示。スマホは非表示） */
+#artworks .grid .placeholder{display:none}
+#artworks .grid .placeholder .placeholder-thumb{
+  width:100%;
+  aspect-ratio:4/3;
+  border-radius:8px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  margin-bottom:.75rem;
+}
+@media (min-width:641px){
+  #artworks .grid .placeholder{display:block}
+}
+
 /* 区切りやリンクに緑ラインのアクセント */
 hr{border:none;border-top:2px solid rgba(22,163,74,.2);margin:1.5rem 0}
 
@@ -490,9 +504,42 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     togglePlaceholder();
     mql.addEventListener('change', togglePlaceholder);
   }
+
+  // === Art Works（3列）の端埋め（PCのみ） ===
+  const artworks = document.getElementById('artworks');
+  if (artworks) {
+    const grid = artworks.querySelector('.grid');
+    const makePlaceholders = () => {
+      if (!grid) return;
+
+      // 既存プレースホルダー削除
+      grid.querySelectorAll('.card.placeholder').forEach(el => el.remove());
+
+      // モバイルは追加しない
+      if (mql.matches) return;
+
+      // 実カード数（placeholder除外）
+      const realCards = Array.from(grid.children).filter(el =>
+        el.classList && el.classList.contains('card') && !el.classList.contains('placeholder')
+      );
+      const remainder = realCards.length % 3;
+      const needed = remainder === 0 ? 0 : 3 - remainder;
+
+      for (let i = 0; i < needed; i++) {
+        const ph = document.createElement('article');
+        ph.className = 'card placeholder';
+        ph.setAttribute('aria-hidden', 'true');
+        ph.innerHTML = '<div class="placeholder-thumb" aria-hidden="true"></div>';
+        grid.appendChild(ph);
+      }
+    };
+
+    // 初期化 & リサイズ時
+    makePlaceholders();
+    window.addEventListener('resize', makePlaceholders);
+    mql.addEventListener('change', makePlaceholders);
+  }
 })();
-
-
 </script>
 </body>
 </html>
