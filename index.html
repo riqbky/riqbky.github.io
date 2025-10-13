@@ -26,10 +26,24 @@ header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line)
 nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:space-between;align-items:center;padding:.6rem 1rem}
 nav a{padding:.4rem .6rem;border-radius:.6rem;transition:background .25s ease}
 nav a:hover, nav a:active{background:rgba(22,163,74,.08)}
-nav strong{letter-spacing:.2px}
 
-/* 緑のアクセント：フォーカスリング */
-nav a:focus-visible, a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:.4rem}
+/* ブランドロゴ風バッジ */
+.brand{
+  display:inline-block;
+  background:var(--accent);      /* 中身も枠線も同じ緑（枠なし） */
+  color:#fff;                    /* 可読性のため白文字 */
+  padding:.45rem .7rem;
+  border-radius:.6rem;           /* 角丸は他と合わせる */
+  font-weight:700;
+  letter-spacing:.2px;
+}
+.brand:hover{background:var(--accent);} /* ホバーで色を変えない */
+.brand:focus-visible{outline:2px solid #fff; outline-offset:2px;} /* 緑地で見えるフォーカス */
+
+/* 緑のアクセント：フォーカスリング（一般リンク） */
+nav a:focus-visible:not(.brand), a:focus-visible:not(.brand){
+  outline:2px solid var(--accent);outline-offset:2px;border-radius:.4rem
+}
 ::selection{background:rgba(22,163,74,.18)}
 
 /* メイン構造 */
@@ -49,8 +63,8 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 }
 .avatar{
   width:200px;height:200px;border-radius:20px;overflow:hidden;
-  border:3px solid var(--accent); /* リクエスト: 緑の枠線 */
-  background:#fafafa;display:block;user-select:none;pointer-events:none; /* 触っても何も起きない */
+  border:3px solid var(--accent); /* 緑の枠線 */
+  background:#fafafa;display:block;user-select:none;pointer-events:none;
 }
 .avatar img{width:100%;height:100%;object-fit:cover}
 
@@ -120,7 +134,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 
 /* 前後矢印 */
 .lb-nav{
-  position:absolute;inset:0;pointer-events:none; /* 画像の左右に重ねるレイヤ */
+  position:absolute;inset:0;pointer-events:none;
 }
 .lb-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -145,7 +159,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   .avatar{width:200px;height:200px;border-radius:14px} /* 2倍サイズ */
   h1{margin-top:.2rem}
   .small{max-width:28ch;margin:0 auto}
-  section{padding:1.6rem 0;scroll-margin-top:96px} /* ヘッダー折返しに備え margin を拡大 */
+  section{padding:1.6rem 0;scroll-margin-top:96px}
   .lightbox-close{top:10px;right:10px;width:36px;height:36px;font-size:20px;line-height:36px}
   .lb-arrow, .lb-nav{display:none !important} /* スマホは矢印を出さない */
 }
@@ -154,7 +168,8 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 <body>
 <header>
   <nav>
-    <strong>Rikuou Yokosawa</strong>
+    <!-- 緑の角丸バッジのブランド名（クリックで先頭へ） -->
+    <a href="#home" class="brand" aria-label="Go to top"><strong>Rikuou Yokosawa</strong></a>
     <div>
       <a href="#artworks">Art Works</a>
       <a href="#research">Research</a>
@@ -167,7 +182,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 <main>
   <section id="home">
     <div class="hero">
-      <!-- プロフィール画像（緑の枠線に変更） -->
+      <!-- プロフィール画像（緑の枠線） -->
       <div class="avatar" role="img" aria-label="Portrait of Rikuou Yokosawa">
         <img src="assets/profile.jpg" alt="">
       </div>
@@ -294,14 +309,12 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     imgEl.src = src;
     imgEl.alt = alt || '';
     capEl.textContent = caption || '';
-    // 前後矢印の有効/無効（ループにするので常に有効）
   }
 
   function close(){
     lightbox.classList.remove('open');
     document.body.classList.remove('no-scroll');
     setTimeout(() => { imgEl.src = ''; capEl.textContent=''; }, 120);
-    // 元のサムネにフォーカスを戻す
     if(current >= 0 && thumbs[current]) thumbs[current].focus();
     current = -1;
   }
@@ -320,7 +333,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     show(t.src, t.alt, t.dataset.caption || '');
   }
 
-  // ボタン操作
+  // ボタン操作（モバイルでは無効）
   btnClose.addEventListener('click', close);
   if(!isMobile){
     btnNext.addEventListener('click', next);
@@ -331,7 +344,6 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   document.addEventListener('keydown', e => {
     if(!lightbox.classList.contains('open')) return;
     if(e.key === 'Escape') close();
-    // モバイルではキーボード矢印は無効
     if(!isMobile){
       if(e.key === 'ArrowRight') next();
       if(e.key === 'ArrowLeft') prev();
@@ -340,7 +352,6 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 
   // オーバーレイ（黒背景）クリックで閉じる
   lightbox.addEventListener('click', e => {
-    // 画像や矢印のクリックは除外（.lb-frame の外側のみで閉じる）
     const frame = e.target.closest('.lb-frame');
     if(!frame) close();
   });
