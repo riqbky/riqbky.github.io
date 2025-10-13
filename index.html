@@ -17,30 +17,53 @@
 
 *{box-sizing:border-box}
 body{font-family:system-ui,Roboto,"Noto Sans JP",sans-serif;line-height:1.7;margin:0;background:var(--paper);color:var(--ink)}
-a{color:inherit}
+a{color:inherit;text-decoration:none;}
 
+/* ヘッダー */
 header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
 nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:space-between;align-items:center;padding:.6rem 1rem}
-nav a{text-decoration:none;color:var(--ink);padding:.4rem .6rem;border-radius:.6rem}
-nav a:hover{background:#f3f3f3}
+nav a{padding:.4rem .6rem;border-radius:.6rem;transition:background .25s ease}
+nav a:hover, nav a:active{background:rgba(22,163,74,.08)}
 nav strong{letter-spacing:.2px}
 
-/* 緑のアクセント：下線とフォーカスリング */
+/* 緑のアクセント：フォーカスリング */
 nav a:focus-visible, a:focus-visible{outline:2px solid var(--accent);outline-offset:2px;border-radius:.4rem}
 ::selection{background:rgba(22,163,74,.18)}
 
+/* メイン構造 */
 main{max-width:var(--max);margin:2rem auto;padding:0 1rem}
-section{padding:2rem 0;border-top:1px solid var(--line)}
+section{padding:2rem 0;border-top:1px solid var(--line);transition:background .3s ease}
+section:hover{background:rgba(22,163,74,.03)} /* セクション全体がほんのり緑になる */
+
 h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.2rem 0}
 h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 
 /* ヒーローブロック（写真 + 見出し） */
-.hero{display:grid;grid-template-columns:96px 1fr;gap:1rem;align-items:center}
-.avatar{
-  width:96px;height:96px;border-radius:12px;overflow:hidden;border:1px solid var(--line);
-  background:#fafafa;display:block
+.hero{
+  display:grid;
+  grid-template-columns:200px 1fr; /* プロフィール画像を約2倍に拡大 */
+  gap:2rem;
+  align-items:center;
 }
-.avatar img{width:100%;height:100%;object-fit:cover}
+.avatar{
+  width:200px;
+  height:200px;
+  border-radius:20px;
+  overflow:hidden;
+  border:2px solid var(--line);
+  background:#fafafa;
+  display:block;
+  transition:transform .3s ease, border-color .3s ease;
+}
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+.avatar:hover{
+  transform:scale(1.03);
+  border-color:var(--accent);
+}
 
 /* 小さな補助テキスト + 緑のアクセントドット */
 .small{font-size:.9rem;color:var(--muted)}
@@ -48,12 +71,25 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 
 /* グリッド（作品） */
 .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{border:1px solid var(--line);border-radius:12px;padding:1rem;background:#fff}
+.card{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:1rem;
+  background:#fff;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+
+/* カードホバー時（ふわっと浮いて緑に） */
+.card:hover, .card:active{
+  transform:translateY(-4px);
+  border-color:var(--accent);
+  box-shadow:0 6px 16px rgba(22,163,74,0.12);
+}
 
 /* 作品カード：画像＋情報 */
 .thumb{
   width:100%;
-  aspect-ratio:4/3;       /* 画像の比率を統一（差し替えOK） */
+  aspect-ratio:4/3;
   object-fit:cover;
   border-radius:8px;
   border:1px solid var(--line);
@@ -77,8 +113,8 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 /* スマホ最適化 */
 @media (max-width:640px){
   nav{flex-wrap:wrap}
-  .hero{grid-template-columns:72px 1fr}
-  .avatar{width:72px;height:72px;border-radius:10px}
+  .hero{grid-template-columns:120px 1fr;gap:1rem;}
+  .avatar{width:120px;height:120px;border-radius:14px;}
   section{padding:1.6rem 0}
 }
 </style>
@@ -97,7 +133,6 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 </header>
 
 <main>
-  <!-- 写真を左に：assets/profile.jpg を差し替え -->
   <section id="home">
     <div class="hero">
       <a class="avatar" href="#contact" aria-label="Rikuou Yokosawa">
@@ -114,15 +149,12 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     <h2>Art Works</h2>
 
     <div class="grid">
-      <!-- 作品カード（例） -->
       <article class="card">
         <img class="thumb" src="assets/artwork-001.jpg" alt="タイトル（F6, 2025）">
         <strong>タイトル</strong><br>
         <span class="small">2025 / F6</span>
         <div class="meta">
           <span class="badge price">¥45,000</span>
-          <!-- 売約時だけ表示： -->
-          <!-- <span class="badge sold">SOLD OUT</span> -->
         </div>
       </article>
 
@@ -135,7 +167,6 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
-      <!-- 必要なだけ繰り返し。画像を assets/ に追加して src を変更 -->
     </div>
 
     <p class="small">画像は <code>assets/</code> に置いて、上の <code>src</code> を差し替えるだけ。</p>
