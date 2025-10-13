@@ -27,20 +27,20 @@ nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:spa
 nav a{padding:.4rem .6rem;border-radius:.6rem;transition:background .25s ease}
 nav a:hover, nav a:active{background:rgba(22,163,74,.08)}
 
-/* ブランドロゴ風バッジ */
+/* ブランドロゴ風バッジ（塗りつぶし緑） */
 .brand{
   display:inline-block;
-  background:var(--accent);      /* 塗りつぶし緑 */
-  color:#fff;                    /* 白文字 */
+  background:var(--accent);
+  color:#fff;
   padding:.45rem .7rem;
-  border-radius:.6rem;           /* 角丸は他と揃える */
+  border-radius:.6rem;
   font-weight:700;
   letter-spacing:.2px;
 }
 .brand:hover{background:var(--accent)}
 .brand:focus-visible{outline:2px solid #fff; outline-offset:2px}
 
-/* フォーカスリング（一般リンク） */
+/* 一般リンクのフォーカス */
 nav a:focus-visible:not(.brand), a:focus-visible:not(.brand){
   outline:2px solid var(--accent);outline-offset:2px;border-radius:.4rem
 }
@@ -54,7 +54,29 @@ section:hover{background:rgba(22,163,74,.03)}
 h1{font-size:clamp(1.7rem,4vw,2.5rem);margin:.2rem 0 .4rem 0;line-height:1.2}
 h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 
-/* ヒント文（Art Works直下用） */
+/* ヒーローブロック（写真 + 見出し）— ご指定版 */
+.hero{
+  display:grid;
+  grid-template-columns:200px 1fr; /* プロフィール画像 */
+  gap:2rem;
+  align-items:center;
+}
+.avatar{
+  width:200px;height:200px;border-radius:20px;overflow:hidden;
+  border:3px solid var(--accent); /* 緑の枠線 */
+  background:#fafafa;display:block;user-select:none;pointer-events:none;
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
+
+/* 小さな補助テキスト + 緑のアクセントドット */
+.small{font-size:.95rem;color:var(--muted)}
+.small .dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--accent);margin-right:.4em;vertical-align:middle}
+
+/* 強調リンク（緑で表示。URL文字列は出さない） */
+.accent-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.accent-link:hover{text-decoration-thickness:2px}
+
+/* ヒント文（Art Works直下） */
 .hint{font-size:.95rem;color:var(--muted);margin:.2rem 0 1rem}
 .hint-mobile{display:none}
 
@@ -101,21 +123,18 @@ hr{border:none;border-top:2px solid rgba(22,163,74,.2);margin:1.5rem 0}
 /* フッター */
 footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(--line)}
 
-/* ========= ライトボックス（拡大表示 + 矢印 + キャプション） ========= */
+/* ========= ライトボックス ========= */
 .lightbox{
   position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.8);
   z-index:1000;padding:2vw;
 }
 .lightbox.open{display:grid;}
-
 .lb-frame{position:relative;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:.8rem}
 .lb-img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
 .lb-caption{
   color:#f3f3f3;font-size:.95rem;line-height:1.5;text-align:center;
   background:rgba(0,0,0,.35);padding:.5rem .8rem;border-radius:8px;max-width:min(92vw,820px)
 }
-
-/* 閉じるボタン（白い×） */
 .lightbox-close{
   position:fixed;top:16px;right:16px;z-index:1001;
   width:40px;height:40px;border-radius:999px;border:none;background:rgba(255,255,255,.95);
@@ -123,8 +142,6 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   box-shadow:0 2px 12px rgba(0,0,0,.35);
 }
 .lightbox-close:hover{background:#fff}
-
-/* 前後矢印 */
 .lb-nav{position:absolute;inset:0;pointer-events:none}
 .lb-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
@@ -142,11 +159,11 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   .lb-next{right:8px}
 }
 
-/* スマホ最適化 */
+/* スマホ最適化（ご指定版：縦並び・画像200px／矢印非表示／アンカー補正強め） */
 @media (max-width:640px){
   nav{flex-wrap:wrap}
   .hero{grid-template-columns:1fr;gap:1rem;justify-items:center;text-align:center}
-  .avatar{width:200px;height:200px;border-radius:14px} /* 2倍サイズ */
+  .avatar{width:200px;height:200px;border-radius:14px}
   h1{margin-top:.2rem}
   .small{max-width:28ch;margin:0 auto}
   section{padding:1.6rem 0;scroll-margin-top:96px}
@@ -327,7 +344,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   const btnClose = document.getElementById('lightboxClose');
   const btnPrev = document.getElementById('lbPrev');
   const btnNext = document.getElementById('lbNext');
-  const isMobile = window.matchMedia('(max-width: 640px)');
+  const mql = window.matchMedia('(max-width: 640px)');
 
   let current = -1; // 現在表示中のインデックス
   let touchStartX = 0, touchEndX = 0;
@@ -384,13 +401,14 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 
   // ボタン操作（モバイルでは無効）
   btnClose.addEventListener('click', close);
-  if(!isMobile.matches){
+  if(!mql.matches){
     btnNext.addEventListener('click', next);
     btnPrev.addEventListener('click', prev);
   }
-  isMobile.addEventListener('change', e => {
+  mql.addEventListener('change', e => {
     if(e.matches){
-      btnNext.replaceWith(btnNext.cloneNode(true)); // イベント解除
+      // モバイルに切り替わったら矢印のクリックイベントを解除
+      btnNext.replaceWith(btnNext.cloneNode(true));
       btnPrev.replaceWith(btnPrev.cloneNode(true));
     }
   });
@@ -399,7 +417,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   document.addEventListener('keydown', e => {
     if(!lightbox.classList.contains('open')) return;
     if(e.key === 'Escape') close();
-    if(!isMobile.matches){
+    if(!mql.matches){
       if(e.key === 'ArrowRight') next();
       if(e.key === 'ArrowLeft') prev();
     }
@@ -438,14 +456,14 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     const countCards = rgrid.querySelectorAll('.card:not(.placeholder)').length;
     const togglePlaceholder = () => {
       if(!placeholder) return;
-      if(!isMobile.matches && countCards % 2 === 1){
+      if(!mql.matches && countCards % 2 === 1){
         placeholder.classList.add('show');
       }else{
         placeholder.classList.remove('show');
       }
     };
     togglePlaceholder();
-    isMobile.addEventListener('change', togglePlaceholder);
+    mql.addEventListener('change', togglePlaceholder);
   }
 })();
 </script>
