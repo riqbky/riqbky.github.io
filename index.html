@@ -1,29 +1,188 @@
-<!doctype html><html lang="ja"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<title>Rikuou Yokosawa | </title>
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rikuou Yokosawa | Portfolio</title>
 <meta name="description" content="Portfolio showcasing my artworks and CV.">
 <style>
-:root{--max:900px}body{font-family:system-ui,Roboto,"Noto Sans JP",sans-serif;line-height:1.7;margin:0}
-header{position:sticky;top:0;background:#fff;border-bottom:1px solid #eee}
-nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:space-between;padding:.6rem 1rem}
-nav a{text-decoration:none;color:#111;padding:.4rem .6rem;border-radius:.6rem}nav a:hover{background:#f3f3f3}
-main{max-width:var(--max);margin:2rem auto;padding:0 1rem}section{padding:2rem 0;border-top:1px solid #eee}
-h1{font-size:clamp(1.6rem,4vw,2.4rem);margin:.2rem 0}.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-.card{border:1px solid #eee;border-radius:12px;padding:1rem}.small{font-size:.9rem;color:#555}footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid #eee}
-</style></head><body>
-<header><nav><strong>Rikuou Yokosawa</strong><div>
-<a href="#artworks">Art Works</a><a href="#research">Research</a><a href="#cv">CV</a><a href="#contact">Contact</a>
-</div></nav></header><main>
-<section id="home"><h1>あいうえお</h1>
-<p class="small">???</p></section>
-<section id="artworks"><h2>Art Works</h2>
-<div class="grid"><div class="card"><strong>タイトル</strong><br><span class="small">2025 / F6 </span></div>
-<div class="card"><strong>作品タイトル</strong><br><span class="small">2025 / F4 /span></div></div>
-<p class="small">画像は <code>assets/</code> に置いてここに <code>&lt;img&gt;</code> で貼るだけ。</p></section>
-<section id="research"><h2>Research</h2><ul>
-<li>リンク：…（リンク）</li><li>リンク：…（リンク）</li><li>リンク：…（リンク）</li></ul></section>
-<section id="cv"><h2>CV</h2><ul>
-<li>20XX–：NU </li><li>????：…</li></ul></section>
-<section id="contact"><h2>Contact</h2>
-<p>メール：<a href="mailto:contact@rikuou-yokosawa.jp">contact@rikuou-yokosawa.jp</a></p>
-<p class="small">© 2025 Rikuou Yokosawa</p></section></main><footer>Thank you for reaching this far.</footer></body></html>
+:root {
+  --max: 900px;
+  --bg: #0b0b0b;       /* 黒背景 */
+  --fg: #e5e5e5;       /* 明るいテキスト色 */
+  --accent: #00b894;   /* 緑アクセント */
+  --border: #1f1f1f;   /* 枠線色 */
+}
+
+body {
+  font-family: system-ui, Roboto, "Noto Sans JP", sans-serif;
+  line-height: 1.8;
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+}
+
+header {
+  position: sticky;
+  top: 0;
+  background: rgba(0, 0, 0, 0.85);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(8px);
+  z-index: 10;
+}
+
+nav {
+  max-width: var(--max);
+  margin: 0 auto;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0.8rem 1rem;
+}
+
+nav strong {
+  font-weight: 600;
+  color: var(--accent);
+  letter-spacing: 0.5px;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--fg);
+  padding: 0.4rem 0.6rem;
+  border-radius: 6px;
+  transition: all 0.2s ease;
+}
+nav a:hover {
+  background: var(--accent);
+  color: #000;
+}
+
+main {
+  max-width: var(--max);
+  margin: 2rem auto;
+  padding: 0 1rem;
+}
+
+section {
+  padding: 2rem 0;
+  border-top: 1px solid var(--border);
+}
+
+h1, h2 {
+  color: var(--accent);
+  margin: 0.2rem 0 1rem;
+}
+h1 {
+  font-size: clamp(1.8rem, 5vw, 2.6rem);
+}
+
+.grid {
+  display: grid;
+  gap: 1rem;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 1rem;
+  background: #111;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.card:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+.small {
+  font-size: 0.9rem;
+  color: #aaa;
+}
+
+footer {
+  text-align: center;
+  color: #888;
+  padding: 3rem 1rem;
+  border-top: 1px solid var(--border);
+  font-size: 0.95rem;
+}
+
+/* --- スマホ対応調整 --- */
+@media (max-width: 600px) {
+  nav {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  nav strong {
+    margin-bottom: 0.5rem;
+  }
+  section {
+    padding: 1.5rem 0;
+  }
+}
+</style>
+</head>
+<body>
+<header>
+  <nav>
+    <strong>Rikuou Yokosawa</strong>
+    <div>
+      <a href="#artworks">Art Works</a>
+      <a href="#research">Research</a>
+      <a href="#cv">CV</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<main>
+  <section id="home">
+    <h1>あいうえお</h1>
+    <p class="small">???</p>
+  </section>
+
+  <section id="artworks">
+    <h2>Art Works</h2>
+    <div class="grid">
+      <div class="card">
+        <strong>タイトル</strong><br>
+        <span class="small">2025 / F6</span>
+      </div>
+      <div class="card">
+        <strong>作品タイトル</strong><br>
+        <span class="small">2025 / F4</span>
+      </div>
+    </div>
+    <p class="small">画像は <code>assets/</code> に置いてここに <code>&lt;img&gt;</code> で貼るだけ。</p>
+  </section>
+
+  <section id="research">
+    <h2>Research</h2>
+    <ul>
+      <li>リンク：…（リンク）</li>
+      <li>リンク：…（リンク）</li>
+      <li>リンク：…（リンク）</li>
+    </ul>
+  </section>
+
+  <section id="cv">
+    <h2>CV</h2>
+    <ul>
+      <li>20XX–：NU</li>
+      <li>????：…</li>
+    </ul>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+    <p>メール：<a href="mailto:contact@rikuou-yokosawa.jp" style="color:var(--accent)">contact@rikuou-yokosawa.jp</a></p>
+    <p class="small">© 2025 Rikuou Yokosawa</p>
+  </section>
+</main>
+
+<footer>Thank you for reaching this far.</footer>
+</body>
+</html>
