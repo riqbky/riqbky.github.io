@@ -492,37 +492,6 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   }
 })();
 
-  <script>
-(() => {
-  const grid = document.querySelector('.grid:not(.research-grid)'); // Art Works のグリッド
-  const mql = window.matchMedia('(max-width: 640px)');
-
-  if (grid) {
-    const fillPlaceholders = () => {
-      // 既存のダミー削除
-      grid.querySelectorAll('.placeholder').forEach(el => el.remove());
-
-      if (mql.matches) return; // スマホでは追加しない
-
-      const cards = grid.querySelectorAll('.card');
-      const remainder = cards.length % 3;
-      if (remainder !== 0) {
-        const needed = 3 - remainder;
-        for (let i = 0; i < needed; i++) {
-          const ph = document.createElement('article');
-          ph.className = 'card placeholder';
-          ph.setAttribute('aria-hidden', 'true');
-          ph.innerHTML = `<div class="placeholder-thumb" aria-hidden="true"></div>`;
-          grid.appendChild(ph);
-        }
-      }
-    };
-
-    fillPlaceholders();
-    window.addEventListener('resize', fillPlaceholders);
-  }
-})();
-</script>
 
 </script>
 </body>
