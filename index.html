@@ -30,17 +30,17 @@ nav a:hover, nav a:active{background:rgba(22,163,74,.08)}
 /* ブランドロゴ風バッジ */
 .brand{
   display:inline-block;
-  background:var(--accent);      /* 中身も枠線も同じ緑（枠なし） */
-  color:#fff;                    /* 可読性のため白文字 */
+  background:var(--accent);      /* 塗りつぶし緑 */
+  color:#fff;                    /* 白文字 */
   padding:.45rem .7rem;
-  border-radius:.6rem;           /* 角丸は他と合わせる */
+  border-radius:.6rem;           /* 角丸は他と揃える */
   font-weight:700;
   letter-spacing:.2px;
 }
-.brand:hover{background:var(--accent);} /* ホバーで色を変えない */
-.brand:focus-visible{outline:2px solid #fff; outline-offset:2px;} /* 緑地で見えるフォーカス */
+.brand:hover{background:var(--accent)}
+.brand:focus-visible{outline:2px solid #fff; outline-offset:2px}
 
-/* 緑のアクセント：フォーカスリング（一般リンク） */
+/* フォーカスリング（一般リンク） */
 nav a:focus-visible:not(.brand), a:focus-visible:not(.brand){
   outline:2px solid var(--accent);outline-offset:2px;border-radius:.4rem
 }
@@ -54,29 +54,11 @@ section:hover{background:rgba(22,163,74,.03)}
 h1{font-size:clamp(1.7rem,4vw,2.5rem);margin:.2rem 0 .4rem 0;line-height:1.2}
 h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 
-/* ヒーローブロック（写真 + 見出し） */
-.hero{
-  display:grid;
-  grid-template-columns:200px 1fr; /* プロフィール画像 */
-  gap:2rem;
-  align-items:center;
-}
-.avatar{
-  width:200px;height:200px;border-radius:20px;overflow:hidden;
-  border:3px solid var(--accent); /* 緑の枠線 */
-  background:#fafafa;display:block;user-select:none;pointer-events:none;
-}
-.avatar img{width:100%;height:100%;object-fit:cover}
+/* ヒント文（Art Works直下用） */
+.hint{font-size:.95rem;color:var(--muted);margin:.2rem 0 1rem}
+.hint-mobile{display:none}
 
-/* 小さな補助テキスト + 緑のアクセントドット */
-.small{font-size:.95rem;color:var(--muted)}
-.small .dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--accent);margin-right:.4em;vertical-align:middle}
-
-/* 強調リンク（緑で表示。URL文字列は出さない） */
-.accent-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
-.accent-link:hover{text-decoration-thickness:2px}
-
-/* グリッド（作品） */
+/* グリッド（作品/研究） */
 .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
 .card{
   border:1px solid var(--line);
@@ -91,7 +73,7 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
   box-shadow:0 6px 16px rgba(22,163,74,0.12);
 }
 
-/* 作品カード：画像＋情報 */
+/* サムネイル */
 .thumb{
   width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--line);
   background:#f7f7f7;display:block;margin-bottom:.75rem;cursor:zoom-in;
@@ -102,6 +84,16 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 }
 .badge.price{border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.06);color:#0f6a36}
 .badge.sold{border-color:#e5e5e5;background:#f3f4f6;color:#6b7280}
+
+/* Research注意書き */
+.research-note{color:var(--muted);margin:.75rem 0 1rem}
+
+/* Researchの奇数埋めパネル（デスクトップのみ表示） */
+.research-grid .placeholder{display:none}
+.research-grid .placeholder.show{display:block}
+.research-grid .placeholder .placeholder-thumb{
+  width:100%;aspect-ratio:4/3;border-radius:8px;border:1px solid var(--accent);background:var(--accent);margin-bottom:.75rem;
+}
 
 /* 区切りやリンクに緑ラインのアクセント */
 hr{border:none;border-top:2px solid rgba(22,163,74,.2);margin:1.5rem 0}
@@ -133,9 +125,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 .lightbox-close:hover{background:#fff}
 
 /* 前後矢印 */
-.lb-nav{
-  position:absolute;inset:0;pointer-events:none;
-}
+.lb-nav{position:absolute;inset:0;pointer-events:none}
 .lb-arrow{
   position:absolute;top:50%;transform:translateY(-50%);
   pointer-events:auto;cursor:pointer;border:none;border-radius:999px;
@@ -152,7 +142,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   .lb-next{right:8px}
 }
 
-/* スマホ最適化（ヒーローの歪み修正・縦並び / 矢印非表示 / アンカーずれ補正強め） */
+/* スマホ最適化 */
 @media (max-width:640px){
   nav{flex-wrap:wrap}
   .hero{grid-template-columns:1fr;gap:1rem;justify-items:center;text-align:center}
@@ -162,6 +152,9 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   section{padding:1.6rem 0;scroll-margin-top:96px}
   .lightbox-close{top:10px;right:10px;width:36px;height:36px;font-size:20px;line-height:36px}
   .lb-arrow, .lb-nav{display:none !important} /* スマホは矢印を出さない */
+  .hint-desktop{display:none}
+  .hint-mobile{display:block}
+  .research-grid .placeholder{display:none !important} /* スマホは埋めパネル非表示（現状維持） */
 }
 </style>
 </head>
@@ -195,9 +188,12 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 
   <section id="artworks">
     <h2>Art Works</h2>
+    <!-- 見出し直下のヒント（PC: クリック / スマホ: タップ） -->
+    <p class="hint hint-desktop">画像クリックで全体像とキャプション。</p>
+    <p class="hint hint-mobile">画像タップで全体像とキャプション。</p>
 
     <div class="grid">
-      <!-- 作品カード例：data-caption にキャプション -->
+      <!-- 作品カード -->
       <article class="card">
         <img class="thumb" src="assets/artwork-001.jpg"
              alt="野間トードの彫刻"
@@ -220,69 +216,73 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
           <span class="badge price">¥8000</span>
         </div>
       </article>
-
       <!-- 以降、同じ要領で .thumb に data-caption を加えるだけ -->
     </div>
-
-    <p class="small">画像クリックで全体像とキャプション。</p>
   </section>
 
   <section id="research">
     <h2>Research</h2>
+    <!-- リンク集 -->
     <ul>
       <li><a class="accent-link" href="https://researchmap.jp/Rikuou_Yokosawa" target="_blank" rel="noopener">researchmap</a></li>
       <li><a class="accent-link" href="https://nomatode.com/" target="_blank" rel="noopener">Noma Worm Lab</a></li>
       <li>リンク：…（リンク）</li>
-       <article class="card">
+    </ul>
+
+    <!-- 注意書き＋余白 -->
+    <p class="research-note small">学生活動をメインに記載してあります。公式の業績に関してはresearchmapをご覧ください。</p>
+
+    <!-- 研究カード（Art Worksと同サイズのカード＆グリッド） -->
+    <div class="grid research-grid">
+      <article class="card">
         <img class="thumb" src="assets/research-001.jpg"
              alt="NU"
              data-caption="名古屋大学理学部紹介に大学院生の代表として登壇 / 2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。">
         <strong>名古屋大学理学部紹介に大学院生の代表として登壇</strong><br>
         <span class="small">2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。</span>
-        <div class="meta">
-        </div>
       </article>
-       <article class="card">
+
+      <article class="card">
         <img class="thumb" src="assets/research-002.jpg"
              alt="Mikai-2"
              data-caption="Mikai-2の主催 / 2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。">
         <strong>若手勉強会 Mikai-2 を主催</strong><br>
         <span class="small">2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
-        <div class="meta">
-          <span class="badge price">主催</span>
-        </div>
-      </article> 
+        <div class="meta"><span class="badge price">主催</span></div>
+      </article>
+
       <article class="card">
         <img class="thumb" src="assets/research-003.jpg"
              alt="iSWS2024"
              data-caption="iSWS2024に参加・ポスター賞受賞 / 2024-03-13 / 楽しい勉強会をありがとうございます。">
         <strong>iSWS2024に参加・ポスター賞受賞</strong><br>
         <span class="small">2024-03-13 / 楽しい勉強会をありがとうございます。</span>
-        <div class="meta">
-        <span class="badge sold">学生活動</span>
-        </div>
+        <div class="meta"><span class="badge sold">学生活動</span></div>
       </article>
-       <article class="card">
+
+      <article class="card">
         <img class="thumb" src="assets/research-004.jpg"
              alt="Mikai"
              data-caption="Mikaiの主催 / 2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。">
         <strong>若手勉強会 Mikai を主催</strong><br>
         <span class="small">2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
-        <div class="meta">
-          <span class="badge price">主催</span>
-        </div>
-      </article> 
+        <div class="meta"><span class="badge price">主催</span></div>
+      </article>
+
       <article class="card">
         <img class="thumb" src="assets/research-005.jpg"
              alt="Noma"
              data-caption="Kentaro Nomaとの会食 / 2021-11-20 / この時は、めっちゃ久しぶりにインスタントヌードル以外のものを口にした。本当にありがとうございます。">
         <strong>若手勉強会 Mikai を主催</strong><br>
         <span class="small">2021-11-20 / この時は、めっちゃ久しぶりにインスタントヌードル以外のものを口にした。本当にありがとうございます。</span>
-        <div class="meta">
-        <span class="badge sold">ただの思い出</span>
-        </div>
-      </article> 
-    </ul>
+        <div class="meta"><span class="badge sold">ただの思い出</span></div>
+      </article>
+
+      <!-- 奇数埋め用プレースホルダー（PCのみ表示。JSで必要時にshow付与） -->
+      <article class="card placeholder" aria-hidden="true">
+        <div class="placeholder-thumb" aria-hidden="true"></div>
+      </article>
+    </div>
   </section>
 
   <section id="cv">
@@ -327,7 +327,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   const btnClose = document.getElementById('lightboxClose');
   const btnPrev = document.getElementById('lbPrev');
   const btnNext = document.getElementById('lbNext');
-  const isMobile = window.matchMedia('(max-width: 640px)').matches;
+  const isMobile = window.matchMedia('(max-width: 640px)');
 
   let current = -1; // 現在表示中のインデックス
   let touchStartX = 0, touchEndX = 0;
@@ -351,7 +351,6 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     show(t.src, t.alt, t.dataset.caption || '');
     lightbox.classList.add('open');
     document.body.classList.add('no-scroll');
-    // 初期フォーカスを閉じるボタンへ
     btnClose.focus();
   }
 
@@ -385,16 +384,22 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 
   // ボタン操作（モバイルでは無効）
   btnClose.addEventListener('click', close);
-  if(!isMobile){
+  if(!isMobile.matches){
     btnNext.addEventListener('click', next);
     btnPrev.addEventListener('click', prev);
   }
+  isMobile.addEventListener('change', e => {
+    if(e.matches){
+      btnNext.replaceWith(btnNext.cloneNode(true)); // イベント解除
+      btnPrev.replaceWith(btnPrev.cloneNode(true));
+    }
+  });
 
   // キーボード操作
   document.addEventListener('keydown', e => {
     if(!lightbox.classList.contains('open')) return;
     if(e.key === 'Escape') close();
-    if(!isMobile){
+    if(!isMobile.matches){
       if(e.key === 'ArrowRight') next();
       if(e.key === 'ArrowLeft') prev();
     }
@@ -412,13 +417,11 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
       touchStartX = e.touches[0].clientX;
     }
   }, {passive:true});
-
   lightbox.addEventListener('touchmove', e => {
     if(e.touches.length === 1){
       touchEndX = e.touches[0].clientX;
     }
   }, {passive:true});
-
   lightbox.addEventListener('touchend', () => {
     const dx = touchEndX - touchStartX;
     const threshold = 50; // スワイプ判定しきい値
@@ -427,6 +430,23 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     }
     touchStartX = touchEndX = 0;
   });
+
+  // === Research の奇数埋め判定（PCのみ） ===
+  const rgrid = document.querySelector('.research-grid');
+  if(rgrid){
+    const placeholder = rgrid.querySelector('.placeholder');
+    const countCards = rgrid.querySelectorAll('.card:not(.placeholder)').length;
+    const togglePlaceholder = () => {
+      if(!placeholder) return;
+      if(!isMobile.matches && countCards % 2 === 1){
+        placeholder.classList.add('show');
+      }else{
+        placeholder.classList.remove('show');
+      }
+    };
+    togglePlaceholder();
+    isMobile.addEventListener('change', togglePlaceholder);
+  }
 })();
 </script>
 </body>
