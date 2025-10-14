@@ -220,6 +220,12 @@ header nav > div:nth-of-type(2){
     flex-basis:100%;
   }
 }
+
+  /* Contact：日本語時は英語段落（3つ目の <p>）を隠す。英語時は日本語段落（2つ目）を隠す */
+#contact p.small:nth-of-type(3){display:none}
+html[lang="en"] #contact p.small:nth-of-type(2){display:none}
+html[lang="en"] #contact p.small:nth-of-type(3){display:block}
+  
 </style>
 </head>
 <body>
