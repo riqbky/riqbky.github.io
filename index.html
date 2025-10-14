@@ -87,7 +87,7 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 .accent-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
 .accent-link:hover{text-decoration-thickness:2px}
 
-/* ヒント文（Art Works直下） */
+/* ヒント文（Artworks直下） */
 .hint{font-size:.95rem;color:var(--muted);margin:.2rem 0 1rem}
 .hint-mobile{display:none}
 
@@ -128,7 +128,7 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
   width:100%;aspect-ratio:4/3;border-radius:8px;border:1px solid var(--accent);background:var(--accent);margin-bottom:.75rem;
 }
 
-/* Art Worksの奇数埋めパネル（PCのみ表示。スマホは非表示） */
+/* Artworksの奇数埋めパネル（PCのみ表示。スマホは非表示） */
 #artworks .grid .placeholder{display:none}
 #artworks .grid .placeholder .placeholder-thumb{
   width:100%;
@@ -254,7 +254,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     <!-- ▲▲ 追加ここまで ▲▲ -->
 
     <div>
-      <a href="#artworks">Art Works</a>
+      <a href="#artworks">Artworks</a>
       <a href="#research">Research</a>
       <a href="#cv">CV</a>
       <a href="#contact">Contact</a>
@@ -277,10 +277,10 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
   </section>
 
   <section id="artworks">
-    <h2>Art Works</h2>
+    <h2>Artworks</h2>
     <!-- 見出し直下のヒント（PC: クリック / スマホ: タップ） -->
-    <p class="hint hint-desktop">画像クリックで全体像とキャプション。購入希望の場合はContactからご連絡ください。</p>
-    <p class="hint hint-mobile">画像タップで全体像とキャプション。購入希望の場合はContactからご連絡ください。</p>
+    <p class="hint hint-desktop">画像クリックで全体像とキャプション。購入希望の場合はご連絡ください。</p>
+    <p class="hint hint-mobile">画像タップで全体像とキャプション。購入希望の場合はご連絡ください。</p>
 
     <div class="grid">
 
@@ -411,7 +411,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     <!-- 注意書き＋余白 -->
     <p class="research-note small" style="margin-bottom: 1rem;">主な業績に関してはresearchmap又はORCiDをご覧ください。</p>
 
-    <!-- 研究カード（Art Worksと同サイズのカード＆グリッド） -->
+    <!-- 研究カード（Artworksと同サイズのカード＆グリッド） -->
     <div class="grid research-grid">
       <article class="card">
         <img class="thumb" src="assets/research-001.jpg"
@@ -658,7 +658,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     mql.addEventListener('change', togglePlaceholder);
   }
 
-  // === Art Works（デスクトップ）の端埋め（プレースホルダー動的生成） ===
+  // === Artworks（デスクトップ）の端埋め（プレースホルダー動的生成） ===
   const artworks = document.getElementById('artworks');
   if (artworks) {
     const grid = artworks.querySelector('.grid');
@@ -720,7 +720,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
 })();
 </script>
 
-<!-- ▼▼ 追加：i18n（Art Works と Research を順番非依存に） ▼▼ -->
+<!-- ▼▼ 追加：i18n（Artworks と Research を順番非依存に） ▼▼ -->
 <script>
 (() => {
   const lang = document.documentElement.getAttribute('lang') || 'ja';
@@ -762,7 +762,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     if (imgEl.dataset.origCap !== undefined) imgEl.dataset.caption = imgEl.dataset.origCap;
   };
 
-  /* ===== Art Works：順番依存を排除 ===== */
+  /* ===== Artworks：順番依存を排除 ===== */
   function applyEN_Artworks(){
     // ヒント
     setText('#artworks .hint-desktop', 'Click an image to view it full-size with a caption. For purchase inquiries, please contact me.');
