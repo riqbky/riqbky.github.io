@@ -187,6 +187,35 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   .hint-mobile{display:block}
   .research-grid .placeholder{display:none !important} /* スマホは埋めパネル非表示（現状維持） */
 }
+
+/* =========================
+   ▼▼ 言語切替 UI 追加 ▼▼
+   ========================= */
+.lang-switch{
+  display:flex;gap:.4rem;align-items:center;
+  font-size:.95rem;
+}
+.lang-switch a{
+  border:1px solid var(--line);
+  padding:.28rem .5rem;
+  border-radius:.5rem;
+}
+.lang-switch a.active{
+  background:rgba(22,163,74,.08);
+  border-color:rgba(22,163,74,.35);
+}
+
+/* PCでは自然に右端（Contactの右）に来る：nav が space-between なのでOK */
+
+/* モバイルではブランドの右に配置し、リンク群は2段目へ */
+@media (max-width:640px){
+  header nav > .lang-switch{order:1}
+  header nav > a.brand{order:0}
+  header nav > div:nth-of-type(1){
+    order:2;
+    flex-basis:100%;
+  }
+}
 </style>
 </head>
 <body>
@@ -194,6 +223,14 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   <nav>
     <!-- 緑の角丸バッジのブランド名（クリックで先頭へ） -->
     <a href="#home" class="brand" aria-label="Go to top"><strong>Rikuou Yokosawa</strong></a>
+
+    <!-- ▼▼ 追加：言語切替（スマホ：ブランド右／PC：Contact右） ▼▼ -->
+    <div class="lang-switch" role="group" aria-label="Language switch">
+      <a href="?lang=ja" data-lang="ja" aria-label="日本語">日本語</a>
+      <a href="?lang=en" data-lang="en" aria-label="English">English</a>
+    </div>
+    <!-- ▲▲ 追加ここまで ▲▲ -->
+
     <div>
       <a href="#artworks">Art Works</a>
       <a href="#research">Research</a>
@@ -575,5 +612,23 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   }
 })();
 </script>
+
+<!-- ▼▼ 追加スクリプト：URLの ?lang= に応じて lang を反映＆アクティブ表示 ▼▼ -->
+<script>
+(() => {
+  const params = new URLSearchParams(window.location.search);
+  const lang = (params.get('lang') || '').toLowerCase();
+  if (lang === 'ja' || lang === 'en') {
+    document.documentElement.setAttribute('lang', lang);
+  }
+  // active 表示
+  const links = document.querySelectorAll('.lang-switch a[data-lang]');
+  links.forEach(a => {
+    if (a.dataset.lang === (lang || 'ja')) a.classList.add('active');
+  });
+})();
+</script>
+<!-- ▲▲ 追加ここまで ▲▲ -->
+
 </body>
 </html>
