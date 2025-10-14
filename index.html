@@ -292,7 +292,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
              data-en-alt="Work in progress"
              data-en-caption="Work in progress / 2025- / Oil painting">
         <strong data-en-title="Work in progress">制作中</strong><br>
-        <span class="small" data-en-meta="2025 / Oil painting">2025 / 油彩</span>
+        <span class="small" data-en-meta="2025- / Oil painting">2025- / 油彩</span>
         <div class="meta">
           <span class="badge price">COMING SOON</span>
         </div>
@@ -302,11 +302,11 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
       <article class="card">
         <img class="thumb" src="assets/artwork-003.jpg"
              alt="花束"
-             data-caption="花束 / 2025 / アクリル — これまでの研究"
+             data-caption="花束 / 2025 / アクリル F3 — これまでの研究"
              data-en-alt="Bouquet"
-             data-en-caption="Bouquet / 2025 / Acrylic — Prior research">
+             data-en-caption="Bouquet / 2025 / Acrylic F3 — My Research so far">
         <strong data-en-title="Bouquet">花束</strong><br>
-        <span class="small" data-en-meta="2025 / Acrylic — Prior research">2025 / アクリル — これまでの研究</span>
+        <span class="small" data-en-meta="2025 / Acrylic F3 — My Research">2025 / アクリル F3 — これまでの研究</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
@@ -316,11 +316,11 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
       <article class="card">
         <img class="thumb" src="assets/artwork-004.jpg"
              alt="曇り空に握りしめて"
-             data-caption="曇り空に握りしめて / 2025 / アクリル"
+             data-caption="曇り空に握りしめて / 2025 / アクリル M12"
              data-en-alt="Clenched Under a Cloudy Sky"
-             data-en-caption="Clenched Under a Cloudy Sky / 2025 / Acrylic">
+             data-en-caption="Clenched Under a Cloudy Sky / 2025 / Acrylic M12">
         <strong data-en-title="Clenched Under a Cloudy Sky">曇り空に握りしめて</strong><br>
-        <span class="small" data-en-meta="2025 / Acrylic">2025 / アクリル</span>
+        <span class="small" data-en-meta="2025 / Acrylic M12">2025 / アクリル M12</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
@@ -344,11 +344,11 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
       <article class="card">
         <img class="thumb" src="assets/artwork-005.jpg"
              alt="自画像"
-             data-caption="自画像 / 2025 / アクリル"
+             data-caption="自画像 / 2025 / アクリル F4"
              data-en-alt="Self-portrait"
-             data-en-caption="Self-portrait / 2025 / Acrylic">
+             data-en-caption="Self-portrait / 2025 / Acrylic F4">
         <strong data-en-title="Self-portrait">自画像</strong><br>
-        <span class="small" data-en-meta="2025 / Acrylic">2025 / アクリル</span>
+        <span class="small" data-en-meta="2025 / Acrylic F4">2025 / アクリル F4</span>
         <div class="meta">
           <span class="badge price">¥ASK</span>
         </div>
@@ -358,11 +358,11 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
       <article class="card">
         <img class="thumb" src="assets/artwork-006.jpg"
              alt="蓮の花"
-             data-caption="蓮の花 / 2022 / アクリル"
+             data-caption="蓮の花 / 2022 / アクリル SM"
              data-en-alt="Lotus"
-             data-en-caption="Lotus / 2022 / Acrylic">
+             data-en-caption="Lotus / 2022 / Acrylic SM">
         <strong data-en-title="Lotus">蓮の花</strong><br>
-        <span class="small" data-en-meta="2022 / Acrylic">2022 / アクリル</span>
+        <span class="small" data-en-meta="2022 / Acrylic SM">2022 / アクリル</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
@@ -765,8 +765,8 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
   /* ===== Art Works：順番依存を排除 ===== */
   function applyEN_Artworks(){
     // ヒント
-    setText('#artworks .hint-desktop', 'Click an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
-    setText('#artworks .hint-mobile',  'Tap an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
+    setText('#artworks .hint-desktop', 'Click an image to view it full-size with a caption. For purchase inquiries, please contact me.');
+    setText('#artworks .hint-mobile',  'Tap an image to view it full-size with a caption. For purchase inquiries, please contact me.');
 
     document.querySelectorAll('#artworks .grid > article.card:not(.placeholder)').forEach(card => {
       const titleEl = card.querySelector('strong');
