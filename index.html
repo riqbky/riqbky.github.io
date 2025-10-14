@@ -23,7 +23,7 @@ body.no-scroll{overflow:hidden;} /* ライトボックス中のスクロール�
 
 /* ヘッダー */
 header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
-nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:space-between;align-items:center;padding:.6rem 1rem}
+nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:flex-start;align-items:center;padding:.6rem 1rem}
 nav a{padding:.4rem .6rem;border-radius:.6rem;transition:background .25s ease}
 nav a:hover, nav a:active{background:rgba(22,163,74,.08)}
 
@@ -194,6 +194,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 .lang-switch{
   display:flex;gap:.4rem;align-items:center;
   font-size:.95rem;
+  margin-left:.5rem; /* ロゴのすぐ右に寄せる */
 }
 .lang-switch a{
   border:1px solid var(--line);
@@ -205,14 +206,17 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   border-color:rgba(22,163,74,.35);
 }
 
-/* PCでは自然に右端（Contactの右）に来る：nav が space-between なのでOK */
+/* ナビ右ブロックを右端へ（ロゴ＋言語を左寄せのまま） */
+header nav > div:nth-of-type(2){
+  margin-left:auto; /* メニュー群を右端へ押し出す */
+}
 
-/* モバイルではブランドの右に配置し、リンク群は2段目へ */
+/* モバイル：ロゴと切替を同じ行に、切替は右端。リンク群は2段目100%幅 */
 @media (max-width:640px){
-  header nav > .lang-switch{order:1}
-  header nav > a.brand{order:0}
-  header nav > div:nth-of-type(1){
-    order:2;
+  .lang-switch{order:2;margin-left:auto}
+  header nav > a.brand{order:1}
+  header nav > div:nth-of-type(2){
+    order:3;
     flex-basis:100%;
   }
 }
@@ -224,7 +228,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
     <!-- 緑の角丸バッジのブランド名（クリックで先頭へ） -->
     <a href="#home" class="brand" aria-label="Go to top"><strong>Rikuou Yokosawa</strong></a>
 
-    <!-- ▼▼ 追加：言語切替（スマホ：ブランド右／PC：Contact右） ▼▼ -->
+    <!-- ▼▼ 追加：言語切替（デスクトップ：ロゴ右／モバイル：ロゴと同じ行の右端） ▼▼ -->
     <div class="lang-switch" role="group" aria-label="Language switch">
       <a href="?lang=ja" data-lang="ja" aria-label="日本語">日本語</a>
       <a href="?lang=en" data-lang="en" aria-label="English">English</a>
@@ -613,7 +617,7 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
 })();
 </script>
 
-<!-- ▼▼ 追加スクリプト：URLの ?lang= に応じて lang を反映＆アクティブ表示 ▼▼ -->
+<!-- ▼▼ langパラメータ処理 + アクティブ表示 ▼▼ -->
 <script>
 (() => {
   const params = new URLSearchParams(window.location.search);
@@ -626,6 +630,223 @@ footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(-
   links.forEach(a => {
     if (a.dataset.lang === (lang || 'ja')) a.classList.add('active');
   });
+})();
+</script>
+
+<!-- ▼▼ 追加：i18n（既存HTMLは触らず、EN時のみ置換） ▼▼ -->
+<script>
+(() => {
+  const lang = document.documentElement.getAttribute('lang') || 'ja';
+  const $ = sel => document.querySelector(sel);
+  const setHTML = (sel, html) => {
+    const el = $(sel);
+    if (!el) return;
+    if (!el.dataset.orig) el.dataset.orig = el.innerHTML;
+    el.innerHTML = html;
+  };
+  const resetHTML = sel => {
+    const el = $(sel);
+    if (!el || !el.dataset.orig) return;
+    el.innerHTML = el.dataset.orig;
+  };
+  const setText = (sel, text) => {
+    const el = $(sel);
+    if (!el) return;
+    if (!el.dataset.origText) el.dataset.origText = el.textContent;
+    el.textContent = text;
+  };
+  const resetText = sel => {
+    const el = $(sel);
+    if (!el || !el.dataset.origText) return;
+    el.textContent = el.dataset.origText;
+  };
+  const setImgMeta = (sel, { alt, caption }) => {
+    const el = $(sel);
+    if (!el) return;
+    if (!el.dataset.origAlt) el.dataset.origAlt = el.getAttribute('alt') || '';
+    if (!el.dataset.origCap) el.dataset.origCap = el.dataset.caption || '';
+    if (typeof alt === 'string') el.setAttribute('alt', alt);
+    if (typeof caption === 'string') el.dataset.caption = caption;
+  };
+  const resetImgMeta = sel => {
+    const el = $(sel);
+    if (!el) return;
+    if (el.dataset.origAlt !== undefined) el.setAttribute('alt', el.dataset.origAlt);
+    if (el.dataset.origCap !== undefined) el.dataset.caption = el.dataset.origCap;
+  };
+
+  function applyEN(){
+    /* ===== Art Works ヒント ===== */
+    setText('#artworks .hint-desktop', 'Click an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
+    setText('#artworks .hint-mobile',  'Tap an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
+
+    /* ===== Art Works カード ===== */
+    // 1
+    setText('#artworks .grid > article.card:nth-of-type(1) strong', 'Bouquet');
+    setText('#artworks .grid > article.card:nth-of-type(1) .small',  '2025 / Acrylic — Prior research');
+    setImgMeta('#artworks .grid > article.card:nth-of-type(1) .thumb', {
+      alt: 'Bouquet',
+      caption: 'Bouquet / 2025 / Acrylic — Prior research'
+    });
+
+    // 2
+    setText('#artworks .grid > article.card:nth-of-type(2) strong', 'Clenched Under a Cloudy Sky');
+    setText('#artworks .grid > article.card:nth-of-type(2) .small',  '2025 / Acrylic');
+    setImgMeta('#artworks .grid > article.card:nth-of-type(2) .thumb', {
+      alt: 'Clenched Under a Cloudy Sky',
+      caption: 'Clenched Under a Cloudy Sky / 2025 / Acrylic'
+    });
+
+    // 3
+    setText('#artworks .grid > article.card:nth-of-type(3) strong', 'Noma Toad Sculpture');
+    setText('#artworks .grid > article.card:nth-of-type(3) .small',  '2025 / Hinoki cypress');
+    setImgMeta('#artworks .grid > article.card:nth-of-type(3) .thumb', {
+      alt: 'Noma Toad Sculpture',
+      caption: 'Noma Toad Sculpture / 2025 / Hinoki cypress'
+    });
+
+    // 4
+    setText('#artworks .grid > article.card:nth-of-type(4) strong', 'Self-portrait');
+    setText('#artworks .grid > article.card:nth-of-type(4) .small',  '2025 / Acrylic');
+    setImgMeta('#artworks .grid > article.card:nth-of-type(4) .thumb', {
+      alt: 'Self-portrait',
+      caption: 'Self-portrait / 2025 / Acrylic'
+    });
+
+    // 5
+    setText('#artworks .grid > article.card:nth-of-type(5) strong', 'Lotus');
+    setText('#artworks .grid > article.card:nth-of-type(5) .small',  '2022 / Acrylic');
+    setImgMeta('#artworks .grid > article.card:nth-of-type(5) .thumb', {
+      alt: 'Lotus',
+      caption: 'Lotus / 2022 / Acrylic'
+    });
+
+    // 6
+    setText('#artworks .grid > article.card:nth-of-type(6) strong', 'Giants’ Textbook');
+    setText('#artworks .grid > article.card:nth-of-type(6) .small',  '2018 / Acrylic');
+    setImgMeta('#artworks .grid > article.card:nth-of-type(6) .thumb', {
+      alt: 'Giants’ Textbook',
+      caption: 'Giants’ Textbook / 2018 / Acrylic'
+    });
+
+    // 7
+    setText('#artworks .grid > article.card:nth-of-type(7) strong', 'People');
+    setText('#artworks .grid > article.card:nth-of-type(7) .small',  '2016 / Acrylic');
+    setImgMeta('#artworks .grid > article.card:nth-of-type(7) .thumb', {
+      alt: 'People',
+      caption: 'People / 2016 / Acrylic — People in motion, their scenes and backgrounds.'
+    });
+
+    /* ===== Research 注意書き ===== */
+    setText('#research .research-note', 'Mainly student activities are listed. For official achievements, please see researchmap or ORCiD.');
+
+    /* ===== Research カード ===== */
+    // 1
+    setText('#research .research-grid > article.card:nth-of-type(1) strong',
+      'Spoke as the graduate student representative at the Nagoya University School of Science introduction');
+    setText('#research .research-grid > article.card:nth-of-type(1) .small',
+      '2024-08-09 / There seems to be an archive somewhere on YouTube.');
+    setText('#research .research-grid > article.card:nth-of-type(1) .meta .badge', 'Open Campus');
+    setImgMeta('#research .research-grid > article.card:nth-of-type(1) .thumb', {
+      alt: 'NU',
+      caption: 'Spoke as the graduate student representative at the Nagoya Univ. School of Science introduction / 2024-08-09 / There seems to be an archive somewhere on YouTube.'
+    });
+
+    // 2
+    setText('#research .research-grid > article.card:nth-of-type(2) strong',
+      'Organized Mikai-2 (junior study meeting)');
+    setText('#research .research-grid > article.card:nth-of-type(2) .small',
+      '2024-06-28 / Sincere thanks to everyone who participated—especially the presenters.');
+    setText('#research .research-grid > article.card:nth-of-type(2) .meta .badge.price', 'Organizer');
+    setImgMeta('#research .research-grid > article.card:nth-of-type(2) .thumb', {
+      alt: 'Mikai-2',
+      caption: 'Organized Mikai-2 / 2024-06-28 / Many thanks to all participants.'
+    });
+
+    // 3
+    setText('#research .research-grid > article.card:nth-of-type(3) strong',
+      'Participated in iSWS2024; received a poster prize');
+    setText('#research .research-grid > article.card:nth-of-type(3) .small',
+      '2024-03-13 / Thank you for a wonderful study meeting.');
+    setText('#research .research-grid > article.card:nth-of-type(3) .meta .badge.sold', 'Student activity');
+    setImgMeta('#research .research-grid > article.card:nth-of-type(3) .thumb', {
+      alt: 'iSWS2024',
+      caption: 'Participated in iSWS2024; won a poster prize / 2024-03-13 / Thank you for a wonderful study meeting.'
+    });
+
+    // 4
+    setText('#research .research-grid > article.card:nth-of-type(4) strong',
+      'Organized Mikai (junior study meeting)');
+    setText('#research .research-grid > article.card:nth-of-type(4) .small',
+      '2023-11-17 / Sincere thanks to everyone who participated—especially the presenters.');
+    setText('#research .research-grid > article.card:nth-of-type(4) .meta .badge.price', 'Organizer');
+    setImgMeta('#research .research-grid > article.card:nth-of-type(4) .thumb', {
+      alt: 'Mikai',
+      caption: 'Organized Mikai / 2023-11-17 / Many thanks to all participants.'
+    });
+
+    // 5
+    setText('#research .research-grid > article.card:nth-of-type(5) strong',
+      'Lunch with Kentaro Noma');
+    setText('#research .research-grid > article.card:nth-of-type(5) .small',
+      '2021-11-20 / I finally ate something other than instant noodles. Thank you very much.');
+    setText('#research .research-grid > article.card:nth-of-type(5) .meta .badge.sold', 'Just a memory');
+    setImgMeta('#research .research-grid > article.card:nth-of-type(5) .thumb', {
+      alt: 'Noma',
+      caption: 'Lunch with Kentaro Noma / 2021-11-20 / Thank you very much.'
+    });
+
+    /* ===== CV ===== */
+    setText('#cv ul li:nth-of-type(1)', '2022: B.Sc., School of Science, Nagoya University');
+    setText('#cv ul li:nth-of-type(2)', '2024: M.Sc., Graduate School of Science, Nagoya University');
+    setText('#cv ul li:nth-of-type(3)', '2024–Present: Ph.D. Program, Graduate School of Science, Nagoya University');
+
+    /* ===== Contact：言語別段落の表示切替 ===== */
+    const jp = document.querySelector('#contact p.small:nth-of-type(2)')?.previousElementSibling; // 日本語の説明段落
+    const en = document.querySelector('#contact p.small:nth-of-type(2)'); // 英語の説明段落
+    if (jp) jp.style.display = 'none';
+    if (en) en.style.display = '';
+  }
+
+  function resetJA(){
+    // Art Works hints
+    resetText('#artworks .hint-desktop');
+    resetText('#artworks .hint-mobile');
+
+    // Art cards
+    for (let i=1;i<=7;i++){
+      resetText(`#artworks .grid > article.card:nth-of-type(${i}) strong`);
+      resetText(`#artworks .grid > article.card:nth-of-type(${i}) .small`);
+      resetImgMeta(`#artworks .grid > article.card:nth-of-type(${i}) .thumb`);
+    }
+
+    // Research
+    resetText('#research .research-note');
+    for (let i=1;i<=5;i++){
+      resetText(`#research .research-grid > article.card:nth-of-type(${i}) strong`);
+      resetText(`#research .research-grid > article.card:nth-of-type(${i}) .small`);
+      const badge = document.querySelector(`#research .research-grid > article.card:nth-of-type(${i}) .meta .badge`);
+      if (badge && badge.dataset.origText) badge.textContent = badge.dataset.origText;
+      resetImgMeta(`#research .research-grid > article.card:nth-of-type(${i}) .thumb`);
+    }
+
+    // CV
+    resetText('#cv ul li:nth-of-type(1)');
+    resetText('#cv ul li:nth-of-type(2)');
+    resetText('#cv ul li:nth-of-type(3)');
+
+    // Contact 段落表示を元に（両方表示の元仕様を維持）
+    const jp = document.querySelector('#contact p.small:nth-of-type(2)')?.previousElementSibling;
+    const en = document.querySelector('#contact p.small:nth-of-type(2)');
+    if (jp) jp.style.display = '';
+    if (en) en.style.display = '';
+  }
+
+  if (lang === 'en'){
+    applyEN();
+  }else{
+    resetJA();
+  }
 })();
 </script>
 <!-- ▲▲ 追加ここまで ▲▲ -->
