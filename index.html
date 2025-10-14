@@ -394,7 +394,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
           <span class="badge price">¥8000</span>
         </div>
       </article>
-      <!-- 以降、同じ要領で .thumb に data-caption と data-en-* を加えるだけ -->
+      <!-- 以降、同じ要領で .thumb に data-caption を加えるだけ -->
     </div>
   </section>
 
@@ -716,13 +716,22 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
 })();
 </script>
 
-<!-- ▼▼ 置換方法：番号依存を廃止し、カード内 data を読む ▼▼ -->
+<!-- ▼▼ 追加：i18n（既存HTMLは触らず、EN時のみ置換） ▼▼ -->
 <script>
 (() => {
   const lang = document.documentElement.getAttribute('lang') || 'ja';
   const $ = sel => document.querySelector(sel);
-
-  // 既存のユーティリティ（セレクタ版）
+  const setHTML = (sel, html) => {
+    const el = $(sel);
+    if (!el) return;
+    if (!el.dataset.orig) el.dataset.orig = el.innerHTML;
+    el.innerHTML = html;
+  };
+  const resetHTML = sel => {
+    const el = $(sel);
+    if (!el || !el.dataset.orig) return;
+    el.innerHTML = el.dataset.orig;
+  };
   const setText = (sel, text) => {
     const el = $(sel);
     if (!el) return;
@@ -734,80 +743,38 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     if (!el || !el.dataset.origText) return;
     el.textContent = el.dataset.origText;
   };
-
-  // 新規：要素参照での適用（番号不要）
-  const setNodeText = (el, text) => {
-    if (!el || typeof text !== 'string') return;
-    if (!el.dataset.origText) el.dataset.origText = el.textContent;
-    el.textContent = text;
+  const setImgMeta = (sel, { alt, caption }) => {
+    const el = $(sel);
+    if (!el) return;
+    if (!el.dataset.origAlt) el.dataset.origAlt = el.getAttribute('alt') || '';
+    if (!el.dataset.origCap) el.dataset.origCap = el.dataset.caption || '';
+    if (typeof alt === 'string') el.setAttribute('alt', alt);
+    if (typeof caption === 'string') el.dataset.caption = caption;
   };
-  const resetNodeText = (el) => {
-    if (!el || el.dataset.origText === undefined) return;
-    el.textContent = el.dataset.origText;
-  };
-  const setImgMetaNode = (img, { alt, caption }) => {
-    if (!img) return;
-    if (img.dataset.origAlt === undefined) img.dataset.origAlt = img.getAttribute('alt') || '';
-    if (img.dataset.origCap === undefined) img.dataset.origCap = img.dataset.caption || '';
-    if (typeof alt === 'string') img.setAttribute('alt', alt);
-    if (typeof caption === 'string') img.dataset.caption = caption;
-  };
-  const resetImgMetaNode = (img) => {
-    if (!img) return;
-    if (img.dataset.origAlt !== undefined) img.setAttribute('alt', img.dataset.origAlt);
-    if (img.dataset.origCap !== undefined) img.dataset.caption = img.dataset.origCap;
+  const resetImgMeta = sel => {
+    const el = $(sel);
+    if (!el) return;
+    if (el.dataset.origAlt !== undefined) el.setAttribute('alt', el.dataset.origAlt);
+    if (el.dataset.origCap !== undefined) el.dataset.caption = el.dataset.origCap;
   };
 
   function applyEN(){
-    /* ===== Art Works ヒント（固定文言） ===== */
+    /* ===== Art Works ヒント ===== */
     setText('#artworks .hint-desktop', 'Click an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
     setText('#artworks .hint-mobile',  'Tap an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
 
-    /* ===== Art Works カード：番号依存なし ===== */
-    document.querySelectorAll('#artworks .grid > article.card:not(.placeholder)').forEach(card => {
-      const titleEl = card.querySelector('strong');
-      const smallEl = card.querySelector('.small');
-      const img = card.querySelector('.thumb');
-      if (card.dataset.enTitle) setNodeText(titleEl, card.dataset.enTitle);
-      if (card.dataset.enSmall) setNodeText(smallEl, card.dataset.enSmall);
-      if (img) {
-        setImgMetaNode(img, {
-          alt: img.dataset.enAlt,
-          caption: img.dataset.enCaption
-        });
-      }
-      // （必要時）バッジ英語化
-      card.querySelectorAll('.meta .badge').forEach(b => {
-        if (b.dataset.enText) setNodeText(b, b.dataset.enText);
-      });
-    });
 
-    /* ===== Research 注意書き（固定文言） ===== */
+
+    /* ===== Research 注意書き ===== */
     setText('#research .research-note', 'For main achievements, please see researchmap or ORCiD.');
 
-    /* ===== Research カード：番号依存なし ===== */
-    document.querySelectorAll('#research .research-grid > article.card:not(.placeholder)').forEach(card => {
-      const titleEl = card.querySelector('strong');
-      const smallEl = card.querySelector('.small');
-      const img = card.querySelector('.thumb');
-      if (card.dataset.enTitle) setNodeText(titleEl, card.dataset.enTitle);
-      if (card.dataset.enSmall) setNodeText(smallEl, card.dataset.enSmall);
-      if (img) {
-        setImgMetaNode(img, {
-          alt: img.dataset.enAlt,
-          caption: img.dataset.enCaption
-        });
-      }
-      const badge = card.querySelector('.meta .badge');
-      if (badge && badge.dataset.enText) setNodeText(badge, badge.dataset.enText);
-    });
-
-    /* ===== CV（従来どおり固定3行） ===== */
+  
+    /* ===== CV ===== */
     setText('#cv ul li:nth-of-type(1)', '2022: B.Sc., School of Science, Nagoya University');
     setText('#cv ul li:nth-of-type(2)', '2024: M.Sc., Graduate School of Science, Nagoya University');
     setText('#cv ul li:nth-of-type(3)', '2024–Present: Ph.D. Program, Graduate School of Science, Nagoya University');
 
-    /* ===== Contact：日本語文を隠し、英語文を表示 ===== */
+    /* ===== Contact：言語別段落の表示切替（メールは常に表示） ===== */
     const smallParas = document.querySelectorAll('#contact p.small');
     const jp = smallParas[0];
     const en = smallParas[1];
@@ -820,29 +787,22 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     resetText('#artworks .hint-desktop');
     resetText('#artworks .hint-mobile');
 
-    // Art Works cards
-    document.querySelectorAll('#artworks .grid > article.card:not(.placeholder)').forEach(card => {
-      const titleEl = card.querySelector('strong');
-      const smallEl = card.querySelector('.small');
-      const img = card.querySelector('.thumb');
-      resetNodeText(titleEl);
-      resetNodeText(smallEl);
-      resetImgMetaNode(img);
-      card.querySelectorAll('.meta .badge').forEach(b => resetNodeText(b));
-    });
+    // Art cards
+    for (let i=1;i<=7;i++){
+      resetText(`#artworks .grid > article.card:nth-of-type(${i}) strong`);
+      resetText(`#artworks .grid > article.card:nth-of-type(${i}) .small`);
+      resetImgMeta(`#artworks .grid > article.card:nth-of-type(${i}) .thumb`);
+    }
 
     // Research
     resetText('#research .research-note');
-    document.querySelectorAll('#research .research-grid > article.card:not(.placeholder)').forEach(card => {
-      const titleEl = card.querySelector('strong');
-      const smallEl = card.querySelector('.small');
-      const img = card.querySelector('.thumb');
-      resetNodeText(titleEl);
-      resetNodeText(smallEl);
-      resetImgMetaNode(img);
-      const badge = card.querySelector('.meta .badge');
-      if (badge) resetNodeText(badge);
-    });
+    for (let i=1;i<=5;i++){
+      resetText(`#research .research-grid > article.card:nth-of-type(${i}) strong`);
+      resetText(`#research .research-grid > article.card:nth-of-type(${i}) .small`);
+      const badge = document.querySelector(`#research .research-grid > article.card:nth-of-type(${i}) .meta .badge`);
+      if (badge && badge.dataset.origText) badge.textContent = badge.dataset.origText;
+      resetImgMeta(`#research .research-grid > article.card:nth-of-type(${i}) .thumb`);
+    }
 
     // CV
     resetText('#cv ul li:nth-of-type(1)');
