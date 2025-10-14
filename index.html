@@ -139,7 +139,7 @@ h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
   margin-bottom:.75rem;
 }
 @media (min-width:641px){
-  /* ← ここに !important を付けるだけ */
+  /* PC時は確実に表示 */
   #artworks .grid .placeholder{display:block !important}
 }
 
@@ -482,7 +482,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
   const capEl = document.getElementById('lightboxCaption');
   const btnClose = document.getElementById('lightboxClose');
   const btnPrev = document.getElementById('lbPrev');
-  const btnNext = document.getElementById('lbNext'); // ← タイポ修正
+  const btnNext = document.getElementById('lbNext'); // ← タイポ修正済み
   const mql = window.matchMedia('(max-width: 640px)');
 
   let current = -1; // 現在表示中のインデックス
@@ -610,10 +610,17 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     mql.addEventListener('change', togglePlaceholder);
   }
 
-  // === Art Works（3列）の端埋め（PCのみ） ===
+  // === Art Works（デスクトップ）の端埋め（プレースホルダー動的生成） ===
   const artworks = document.getElementById('artworks');
   if (artworks) {
     const grid = artworks.querySelector('.grid');
+
+    const getColumnCount = () => {
+      const cs = window.getComputedStyle(grid);
+      const cols = cs.gridTemplateColumns.trim().split(/\s+/).filter(Boolean);
+      return cols.length || 3; // フォールバック3（見た目は変えない）
+    };
+
     const makePlaceholders = () => {
       if (!grid) return;
 
@@ -627,12 +634,15 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
       const realCards = Array.from(grid.children).filter(el =>
         el.classList && el.classList.contains('card') && !el.classList.contains('placeholder')
       );
-      const remainder = realCards.length % 3;
-      const needed = remainder === 0 ? 0 : 3 - remainder;
+
+      const cols = getColumnCount();
+      const remainder = realCards.length % cols;
+      const needed = remainder === 0 ? 0 : cols - remainder;
 
       for (let i = 0; i < needed; i++) {
         const ph = document.createElement('article');
-        ph.className = 'card.placeholder';
+        // ★ 本修正：クラスを正しく付与（スペース区切り）
+        ph.classList.add('card', 'placeholder');
         ph.setAttribute('aria-hidden', 'true');
         ph.innerHTML = '<div class="placeholder-thumb" aria-hidden="true"></div>';
         grid.appendChild(ph);
