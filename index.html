@@ -3,239 +3,242 @@
 <head>
 
   <!-- Google tag (gtag.js) -->
-  <script async src="https://www.googletagmanager.com/gtag/js?id=G-MGC7Q3VC8H"></script>
-  <script>
-    window.dataLayer = window.dataLayer || [];
-    function gtag(){dataLayer.push(arguments);}
-    gtag('js', new Date());
-    gtag('config', 'G-MGC7Q3VC8H');
-  </script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-MGC7Q3VC8H"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
 
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Rikuou Yokosawa（横澤陸王）</title>
-  <meta name="description" content="Portfolio showcasing my artworks and CV.">
-  <style>
-  :root{
-    --max:900px;
-    --accent:#16a34a;        /* アクセントの緑 */
-    --ink:#111;              /* 文字(黒) */
-    --paper:#fff;            /* 背景(白) */
-    --muted:#555;            /* 補助テキスト */
-    --line:#eee;             /* 枠線 */
-  }
+  gtag('config', 'G-MGC7Q3VC8H');
+</script>
+  
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Rikuou Yokosawa（横澤陸王）</title>
+<meta name="description" content="Portfolio showcasing my artworks and CV.">
+<style>
+:root{
+  --max:900px;
+  --accent:#16a34a;        /* アクセントの緑 */
+  --ink:#111;              /* 文字(黒) */
+  --paper:#fff;            /* 背景(白) */
+  --muted:#555;            /* 補助テキスト */
+  --line:#eee;             /* 枠線 */
+}
 
-  *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{font-family:system-ui,Roboto,"Noto Sans JP",sans-serif;line-height:1.7;margin:0;background:var(--paper);color:var(--ink)}
-  a{color:inherit;text-decoration:none;}
-  body.no-scroll{overflow:hidden;} /* ライトボックス中のスクロール禁止 */
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:system-ui,Roboto,"Noto Sans JP",sans-serif;line-height:1.7;margin:0;background:var(--paper);color:var(--ink)}
+a{color:inherit;text-decoration:none;}
+body.no-scroll{overflow:hidden;} /* ライトボックス中のスクロール禁止 */
 
-  /* ヘッダー */
-  header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
-  nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:flex-start;align-items:center;padding:.6rem 1rem}
-  nav a{padding:.4rem .6rem;border-radius:.6rem;transition:background .25s ease}
-  nav a:hover, nav a:active{background:rgba(22,163,74,.08)}
+/* ヘッダー */
+header{position:sticky;top:0;background:#fff;border-bottom:1px solid var(--line);z-index:10}
+nav{max-width:var(--max);margin:0 auto;display:flex;gap:1rem;justify-content:flex-start;align-items:center;padding:.6rem 1rem}
+nav a{padding:.4rem .6rem;border-radius:.6rem;transition:background .25s ease}
+nav a:hover, nav a:active{background:rgba(22,163,74,.08)}
 
-  /* ブランドロゴ風バッジ（塗りつぶし緑） */
-  .brand{
-    display:inline-block;
-    background:var(--accent);
-    color:#fff;
-    padding:.45rem .7rem;
-    border-radius:.6rem;
-    font-weight:700;
-    letter-spacing:.2px;
-  }
-  .brand:hover{background:var(--accent)}
-  .brand:focus-visible{outline:2px solid #fff; outline-offset:2px}
+/* ブランドロゴ風バッジ（塗りつぶし緑） */
+.brand{
+  display:inline-block;
+  background:var(--accent);
+  color:#fff;
+  padding:.45rem .7rem;
+  border-radius:.6rem;
+  font-weight:700;
+  letter-spacing:.2px;
+}
+.brand:hover{background:var(--accent)}
+.brand:focus-visible{outline:2px solid #fff; outline-offset:2px}
 
-  /* 一般リンクのフォーカス */
-  nav a:focus-visible:not(.brand), a:focus-visible:not(.brand){
-    outline:2px solid var(--accent);outline-offset:2px;border-radius:.4rem
-  }
-  ::selection{background:rgba(22,163,74,.18)}
+/* 一般リンクのフォーカス */
+nav a:focus-visible:not(.brand), a:focus-visible:not(.brand){
+  outline:2px solid var(--accent);outline-offset:2px;border-radius:.4rem
+}
+::selection{background:rgba(22,163,74,.18)}
 
-  /* メイン構造 */
-  main{max-width:var(--max);margin:2rem auto;padding:0 1rem}
-  section{padding:2rem 0;border-top:1px solid var(--line);transition:background .3s ease;scroll-margin-top:76px}
-  section:hover{background:rgba(22,163,74,.03)}
+/* メイン構造 */
+main{max-width:var(--max);margin:2rem auto;padding:0 1rem}
+section{padding:2rem 0;border-top:1px solid var(--line);transition:background .3s ease;scroll-margin-top:76px}
+section:hover{background:rgba(22,163,74,.03)}
 
-  h1{font-size:clamp(1.7rem,4vw,2.5rem);margin:.2rem 0 .4rem 0;line-height:1.2}
-  h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
+h1{font-size:clamp(1.7rem,4vw,2.5rem);margin:.2rem 0 .4rem 0;line-height:1.2}
+h2{font-size:clamp(1.2rem,3.2vw,1.6rem);margin:.2rem 0 1rem}
 
-  /* ヒーローブロック（写真 + 見出し）— ご指定版 */
-  .hero{
-    display:grid;
-    grid-template-columns:200px 1fr; /* プロフィール画像 */
-    gap:2rem;
-    align-items:center;
-  }
-  .avatar{
-    width:200px;height:200px;border-radius:20px;overflow:hidden;
-    border:3px solid var(--accent); /* 緑の枠線 */
-    background:#fafafa;display:block;user-select:none;pointer-events:none;
-  }
-  .avatar img{width:100%;height:100%;object-fit:cover}
+/* ヒーローブロック（写真 + 見出し）— ご指定版 */
+.hero{
+  display:grid;
+  grid-template-columns:200px 1fr; /* プロフィール画像 */
+  gap:2rem;
+  align-items:center;
+}
+.avatar{
+  width:200px;height:200px;border-radius:20px;overflow:hidden;
+  border:3px solid var(--accent); /* 緑の枠線 */
+  background:#fafafa;display:block;user-select:none;pointer-events:none;
+}
+.avatar img{width:100%;height:100%;object-fit:cover}
 
-  /* 小さな補助テキスト + 緑のアクセントドット */
-  .small{font-size:.95rem;color:var(--muted)}
-  .small .dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--accent);margin-right:.4em;vertical-align:middle}
+/* 小さな補助テキスト + 緑のアクセントドット */
+.small{font-size:.95rem;color:var(--muted)}
+.small .dot{display:inline-block;width:.6em;height:.6em;border-radius:50%;background:var(--accent);margin-right:.4em;vertical-align:middle}
 
-  /* 強調リンク（緑で表示。URL文字列は出さない） */
-  .accent-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
-  .accent-link:hover{text-decoration-thickness:2px}
+/* 強調リンク（緑で表示。URL文字列は出さない） */
+.accent-link{color:var(--accent);text-decoration:underline;text-underline-offset:2px}
+.accent-link:hover{text-decoration-thickness:2px}
 
-  /* ヒント文（Art Works直下） */
-  .hint{font-size:.95rem;color:var(--muted);margin:.2rem 0 1rem}
-  .hint-mobile{display:none}
+/* ヒント文（Art Works直下） */
+.hint{font-size:.95rem;color:var(--muted);margin:.2rem 0 1rem}
+.hint-mobile{display:none}
 
-  /* グリッド（作品/研究） */
-  .grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
-  .card{
-    border:1px solid var(--line);
-    border-radius:12px;
-    padding:1rem;
-    background:#fff;
-    transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
-  }
-  .card:hover, .card:active{
-    transform:translateY(-4px);
-    border-color:var(--accent);
-    box-shadow:0 6px 16px rgba(22,163,74,0.12);
-  }
+/* グリッド（作品/研究） */
+.grid{display:grid;gap:1rem;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{
+  border:1px solid var(--line);
+  border-radius:12px;
+  padding:1rem;
+  background:#fff;
+  transition:transform .25s ease, border-color .25s ease, box-shadow .25s ease;
+}
+.card:hover, .card:active{
+  transform:translateY(-4px);
+  border-color:var(--accent);
+  box-shadow:0 6px 16px rgba(22,163,74,0.12);
+}
 
-  /* サムネイル */
-  .thumb{
-    width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--line);
-    background:#f7f7f7;display:block;margin-bottom:.75rem;cursor:zoom-in;
-  }
-  .meta{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.5rem}
-  .badge{
-    font-size:.75rem;padding:.2rem .5rem;border-radius:.5rem;border:1px solid var(--line);background:#fafafa
-  }
-  .badge.price{border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.06);color:#0f6a36}
-  .badge.sold{border-color:#e5e5e5;background:#f3f4f6;color:#6b7280}
+/* サムネイル */
+.thumb{
+  width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:8px;border:1px solid var(--line);
+  background:#f7f7f7;display:block;margin-bottom:.75rem;cursor:zoom-in;
+}
+.meta{display:flex;gap:.5rem;flex-wrap:wrap;align-items:center;margin-top:.5rem}
+.badge{
+  font-size:.75rem;padding:.2rem .5rem;border-radius:.5rem;border:1px solid var(--line);background:#fafafa
+}
+.badge.price{border-color:rgba(22,163,74,.35);background:rgba(22,163,74,.06);color:#0f6a36}
+.badge.sold{border-color:#e5e5e5;background:#f3f4f6;color:#6b7280}
 
-  /* Research注意書き */
-  .research-note{color:var(--muted);margin:.75rem 0 1rem}
+/* Research注意書き */
+.research-note{color:var(--muted);margin:.75rem 0 1rem}
 
-  /* Researchの奇数埋めパネル（デスクトップのみ表示） */
-  .research-grid .placeholder{display:none}
-  .research-grid .placeholder.show{display:block}
-  .research-grid .placeholder .placeholder-thumb{
-    width:100%;aspect-ratio:4/3;border-radius:8px;border:1px solid var(--accent);background:var(--accent);margin-bottom:.75rem;
-  }
+/* Researchの奇数埋めパネル（デスクトップのみ表示） */
+.research-grid .placeholder{display:none}
+.research-grid .placeholder.show{display:block}
+.research-grid .placeholder .placeholder-thumb{
+  width:100%;aspect-ratio:4/3;border-radius:8px;border:1px solid var(--accent);background:var(--accent);margin-bottom:.75rem;
+}
 
-  /* Art Worksの奇数埋めパネル（PCのみ表示。スマホは非表示） */
-  #artworks .grid .placeholder{display:none}
-  #artworks .grid .placeholder .placeholder-thumb{
-    width:100%;
-    aspect-ratio:4/3;
-    border-radius:8px;
-    border:1px solid var(--accent);
-    background:var(--accent);
-    margin-bottom:.75rem;
-  }
-  @media (min-width:641px){
-    /* PC時は確実に表示 */
-    #artworks .grid .placeholder{display:block !important}
-  }
+/* Art Worksの奇数埋めパネル（PCのみ表示。スマホは非表示） */
+#artworks .grid .placeholder{display:none}
+#artworks .grid .placeholder .placeholder-thumb{
+  width:100%;
+  aspect-ratio:4/3;
+  border-radius:8px;
+  border:1px solid var(--accent);
+  background:var(--accent);
+  margin-bottom:.75rem;
+}
+@media (min-width:641px){
+  /* PC時は確実に表示 */
+  #artworks .grid .placeholder{display:block !important}
+}
 
-  /* 区切りやリンクに緑ラインのアクセント */
-  hr{border:none;border-top:2px solid rgba(22,163,74,.2);margin:1.5rem 0}
+/* 区切りやリンクに緑ラインのアクセント */
+hr{border:none;border-top:2px solid rgba(22,163,74,.2);margin:1.5rem 0}
 
-  /* フッター */
-  footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(--line)}
+/* フッター */
+footer{text-align:center;color:#666;padding:3rem 1rem;border-top:1px solid var(--line)}
 
-  /* ========= ライトボックス ========= */
-  .lightbox{
-    position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.8);
-    z-index:1000;padding:2vw;
-  }
-  .lightbox.open{display:grid;}
-  .lb-frame{position:relative;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:.8rem}
-  .lb-img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
-  .lb-caption{
-    color:#f3f3f3;font-size:.95rem;line-height:1.5;text-align:center;
-    background:rgba(0,0,0,.35);padding:.5rem .8rem;border-radius:8px;max-width:min(92vw,820px)
-  }
-  .lightbox-close{
-    position:fixed;top:16px;right:16px;z-index:1001;
-    width:40px;height:40px;border-radius:999px;border:none;background:rgba(255,255,255,.95);
-    color:#111;font-size:22px;line-height:40px;text-align:center;cursor:pointer;
-    box-shadow:0 2px 12px rgba(0,0,0,.35);
-  }
-  .lightbox-close:hover{background:#fff}
-  .lb-nav{position:absolute;inset:0;pointer-events:none}
-  .lb-arrow{
-    position:absolute;top:50%;transform:translateY(-50%);
-    pointer-events:auto;cursor:pointer;border:none;border-radius:999px;
-    width:46px;height:46px;background:rgba(255,255,255,.92);color:#111;font-size:22px;
-    display:grid;place-items:center;box-shadow:0 2px 12px rgba(0,0,0,.35);
-  }
-  .lb-arrow:hover{background:#fff}
-  .lb-prev{left:-58px}
-  .lb-next{right:-58px}
+/* ========= ライトボックス ========= */
+.lightbox{
+  position:fixed;inset:0;display:none;place-items:center;background:rgba(0,0,0,.8);
+  z-index:1000;padding:2vw;
+}
+.lightbox.open{display:grid;}
+.lb-frame{position:relative;max-width:92vw;max-height:92vh;display:flex;flex-direction:column;align-items:center;gap:.8rem}
+.lb-img{max-width:92vw;max-height:80vh;object-fit:contain;border-radius:10px;box-shadow:0 10px 30px rgba(0,0,0,.5)}
+.lb-caption{
+  color:#f3f3f3;font-size:.95rem;line-height:1.5;text-align:center;
+  background:rgba(0,0,0,.35);padding:.5rem .8rem;border-radius:8px;max-width:min(92vw,820px)
+}
+.lightbox-close{
+  position:fixed;top:16px;right:16px;z-index:1001;
+  width:40px;height:40px;border-radius:999px;border:none;background:rgba(255,255,255,.95);
+  color:#111;font-size:22px;line-height:40px;text-align:center;cursor:pointer;
+  box-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.lightbox-close:hover{background:#fff}
+.lb-nav{position:absolute;inset:0;pointer-events:none}
+.lb-arrow{
+  position:absolute;top:50%;transform:translateY(-50%);
+  pointer-events:auto;cursor:pointer;border:none;border-radius:999px;
+  width:46px;height:46px;background:rgba(255,255,255,.92);color:#111;font-size:22px;
+  display:grid;place-items:center;box-shadow:0 2px 12px rgba(0,0,0,.35);
+}
+.lb-arrow:hover{background:#fff}
+.lb-prev{left:-58px}
+.lb-next{right:-58px}
 
-  /* 画面が狭いとき矢印を内側に */
-  @media (max-width:900px){
-    .lb-prev{left:8px}
-    .lb-next{right:8px}
-  }
+/* 画面が狭いとき矢印を内側に */
+@media (max-width:900px){
+  .lb-prev{left:8px}
+  .lb-next{right:8px}
+}
 
-  /* スマホ最適化（ご指定版：縦並び・画像200px／矢印非表示／アンカー補正強め） */
-  @media (max-width:640px){
-    nav{flex-wrap:wrap}
-    .hero{grid-template-columns:1fr;gap:1rem;justify-items:center;text-align:center}
-    .avatar{width:200px;height:200px;border-radius:14px}
-    h1{margin-top:.2rem}
-    .small{max-width:28ch;margin:0 auto}
-    section{padding:1.6rem 0;scroll-margin-top:96px}
-    .lightbox-close{top:10px;right:10px;width:36px;height:36px;font-size:20px;line-height:36px}
-    .lb-arrow, .lb-nav{display:none !important} /* スマホは矢印を出さない */
-    .hint-desktop{display:none}
-    .hint-mobile{display:block}
-    .research-grid .placeholder{display:none !important} /* スマホは埋めパネル非表示（現状維持） */
-  }
+/* スマホ最適化（ご指定版：縦並び・画像200px／矢印非表示／アンカー補正強め） */
+@media (max-width:640px){
+  nav{flex-wrap:wrap}
+  .hero{grid-template-columns:1fr;gap:1rem;justify-items:center;text-align:center}
+  .avatar{width:200px;height:200px;border-radius:14px}
+  h1{margin-top:.2rem}
+  .small{max-width:28ch;margin:0 auto}
+  section{padding:1.6rem 0;scroll-margin-top:96px}
+  .lightbox-close{top:10px;right:10px;width:36px;height:36px;font-size:20px;line-height:36px}
+  .lb-arrow, .lb-nav{display:none !important} /* スマホは矢印を出さない */
+  .hint-desktop{display:none}
+  .hint-mobile{display:block}
+  .research-grid .placeholder{display:none !important} /* スマホは埋めパネル非表示（現状維持） */
+}
 
-  /* =========================
-     ▼▼ 言語切替 UI 追加 ▼▼
-     ========================= */
-  .lang-switch{
-    display:flex;gap:.4rem;align-items:center;
-    font-size:.95rem;
-    margin-left:.5rem; /* ロゴのすぐ右に寄せる */
-  }
-  .lang-switch a{
-    border:1px solid var(--line);
-    padding:.28rem .5rem;
-    border-radius:.5rem;
-  }
-  .lang-switch a.active{
-    background:rgba(22,163,74,.08);
-    border-color:rgba(22,163,74,.35);
-  }
+/* =========================
+   ▼▼ 言語切替 UI 追加 ▼▼
+   ========================= */
+.lang-switch{
+  display:flex;gap:.4rem;align-items:center;
+  font-size:.95rem;
+  margin-left:.5rem; /* ロゴのすぐ右に寄せる */
+}
+.lang-switch a{
+  border:1px solid var(--line);
+  padding:.28rem .5rem;
+  border-radius:.5rem;
+}
+.lang-switch a.active{
+  background:rgba(22,163,74,.08);
+  border-color:rgba(22,163,74,.35);
+}
 
-  /* ナビ右ブロックを右端へ（ロゴ＋言語を左寄せのまま） */
+/* ナビ右ブロックを右端へ（ロゴ＋言語を左寄せのまま） */
+header nav > div:nth-of-type(2){
+  margin-left:auto; /* メニュー群を右端へ押し出す */
+}
+
+/* モバイル：ロゴと切替を同じ行に、切替は右端。リンク群は2段目100%幅 */
+@media (max-width:640px){
+  .lang-switch{order:2;margin-left:auto}
+  header nav > a.brand{order:1}
   header nav > div:nth-of-type(2){
-    margin-left:auto; /* メニュー群を右端へ押し出す */
+    order:3;
+    flex-basis:100%;
   }
+}
 
-  /* モバイル：ロゴと切替を同じ行に、切替は右端。リンク群は2段目100%幅 */
-  @media (max-width:640px){
-    .lang-switch{order:2;margin-left:auto}
-    header nav > a.brand{order:1}
-    header nav > div:nth-of-type(2){
-      order:3;
-      flex-basis:100%;
-    }
-  }
-
-  /* ▼ 言語別の出し分け（Contactなど） */
-  html[lang="ja"] [data-lang="en"]{display:none !important;}
-  html[lang="en"] [data-lang="ja"]{display:none !important;}
-  </style>
+  /* Contact：日本語時は英語段落（3つ目の <p>）を隠す。英語時は日本語段落（2つ目）を隠す */
+#contact p.small:nth-of-type(3){display:none}
+html[lang="en"] #contact p.small:nth-of-type(2){display:none}
+html[lang="en"] #contact p.small:nth-of-type(3){display:block}
+  
+</style>
 </head>
 <body>
 <header>
@@ -243,7 +246,7 @@
     <!-- 緑の角丸バッジのブランド名（クリックで先頭へ） -->
     <a href="#home" class="brand" aria-label="Go to top"><strong>Rikuou Yokosawa</strong></a>
 
-    <!-- ▼▼ 言語切替（デスクトップ：ロゴ右／モバイル：ロゴと同じ行の右端） ▼▼ -->
+    <!-- ▼▼ 追加：言語切替（デスクトップ：ロゴ右／モバイル：ロゴと同じ行の右端） ▼▼ -->
     <div class="lang-switch" role="group" aria-label="Language switch">
       <a href="?lang=ja" data-lang="ja" aria-label="日本語">日本語</a>
       <a href="?lang=en" data-lang="en" aria-label="English">English</a>
@@ -276,114 +279,122 @@
   <section id="artworks">
     <h2>Art Works</h2>
     <!-- 見出し直下のヒント（PC: クリック / スマホ: タップ） -->
-    <p class="hint hint-desktop"
-       data-en="Click an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.">
-       画像クリックで全体像とキャプション。購入希望の場合はContactからご連絡ください。
-    </p>
-    <p class="hint hint-mobile"
-       data-en="Tap an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.">
-       画像タップで全体像とキャプション。購入希望の場合はContactからご連絡ください。
-    </p>
+    <p class="hint hint-desktop">画像クリックで全体像とキャプション。購入希望の場合はContactからご連絡ください。</p>
+    <p class="hint hint-mobile">画像タップで全体像とキャプション。購入希望の場合はContactからご連絡ください。</p>
 
     <div class="grid">
       <!-- 作品カード 1 -->
-      <article class="card">
+      <article class="card"
+        data-en-title="Bouquet"
+        data-en-small="2025 / Acrylic — Prior research">
         <img class="thumb" src="assets/artwork-003.jpg"
              alt="花束"
              data-caption="花束 / 2025 / アクリル — これまでの研究"
              data-en-alt="Bouquet"
              data-en-caption="Bouquet / 2025 / Acrylic — Prior research">
-        <strong data-en="Bouquet">花束</strong><br>
-        <span class="small" data-en="2025 / Acrylic — Prior research">2025 / アクリル — これまでの研究</span>
+        <strong>花束</strong><br>
+        <span class="small">2025 / アクリル — これまでの研究</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
-
+      
       <!-- 作品カード 2 -->
-      <article class="card">
+      <article class="card"
+        data-en-title="Clenched Under a Cloudy Sky"
+        data-en-small="2025 / Acrylic">
         <img class="thumb" src="assets/artwork-004.jpg"
              alt="曇り空に握りしめて"
              data-caption="曇り空に握りしめて / 2025 / アクリル"
              data-en-alt="Clenched Under a Cloudy Sky"
              data-en-caption="Clenched Under a Cloudy Sky / 2025 / Acrylic">
-        <strong data-en="Clenched Under a Cloudy Sky">曇り空に握りしめて</strong><br>
-        <span class="small" data-en="2025 / Acrylic">2025 / アクリル</span>
+        <strong>曇り空に握りしめて</strong><br>
+        <span class="small">2025 / アクリル</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
 
       <!-- 作品カード 3 -->
-      <article class="card">
+      <article class="card"
+        data-en-title="Nomatode Sculpture"
+        data-en-small="2025 / Hinoki cypress">
         <img class="thumb" src="assets/artwork-001.jpg"
              alt="野間トードの彫刻"
              data-caption="野間トードの彫刻 / 2025 / 檜"
              data-en-alt="Nomatode Sculpture"
              data-en-caption="Nomatode Sculpture / 2025 / Hinoki cypress">
-        <strong data-en="Nomatode Sculpture">野間トードの彫刻</strong><br>
-        <span class="small" data-en="2025 / Hinoki cypress">2025 / 檜</span>
+        <strong>野間トードの彫刻</strong><br>
+        <span class="small">2025 / 檜</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
 
       <!-- 作品カード 4 -->
-      <article class="card">
+      <article class="card"
+        data-en-title="Self-portrait"
+        data-en-small="2025 / Acrylic">
         <img class="thumb" src="assets/artwork-005.jpg"
              alt="自画像"
              data-caption="自画像 / 2025 / アクリル"
              data-en-alt="Self-portrait"
              data-en-caption="Self-portrait / 2025 / Acrylic">
-        <strong data-en="Self-portrait">自画像</strong><br>
-        <span class="small" data-en="2025 / Acrylic">2025 / アクリル</span>
+        <strong>自画像</strong><br>
+        <span class="small">2025 / アクリル</span>
         <div class="meta">
           <span class="badge price">¥ASK</span>
         </div>
       </article>
 
       <!-- 作品カード 5 -->
-      <article class="card">
+      <article class="card"
+        data-en-title="Lotus"
+        data-en-small="2022 / Acrylic">
         <img class="thumb" src="assets/artwork-006.jpg"
              alt="蓮の花"
              data-caption="蓮の花 / 2022 / アクリル"
              data-en-alt="Lotus"
              data-en-caption="Lotus / 2022 / Acrylic">
-        <strong data-en="Lotus">蓮の花</strong><br>
-        <span class="small" data-en="2022 / Acrylic">2022 / アクリル</span>
+        <strong>蓮の花</strong><br>
+        <span class="small">2022 / アクリル</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
 
       <!-- 作品カード 6 -->
-      <article class="card">
+      <article class="card"
+        data-en-title="Giants’ Textbook"
+        data-en-small="2018 / Acrylic">
         <img class="thumb" src="assets/artwork-007.jpg"
              alt="巨人の教科書"
              data-caption="巨人の教科書 / 2018 / アクリル"
              data-en-alt="Giants’ Textbook"
              data-en-caption="Giants’ Textbook / 2018 / Acrylic">
-        <strong data-en="Giants’ Textbook">巨人の教科書</strong><br>
-        <span class="small" data-en="2018 / Acrylic">2018 / アクリル</span>
+        <strong>巨人の教科書</strong><br>
+        <span class="small">2018 / アクリル</span>
         <div class="meta">
           <span class="badge sold">LOST</span>
         </div>
       </article>
 
       <!-- 作品カード 7 -->
-      <article class="card">
+      <article class="card"
+        data-en-title="People"
+        data-en-small="2016 / Acrylic — People in motion, their scenes and backgrounds.">
         <img class="thumb" src="assets/artwork-002.jpg"
              alt="人々"
              data-caption="人々 / 2016 / アクリル — 人々の歩行中、その景色と背景。"
              data-en-alt="People"
              data-en-caption="People / 2016 / Acrylic — People in motion, their scenes and backgrounds.">
-        <strong data-en="People">人々</strong><br>
-        <span class="small" data-en="2016 / Acrylic">2016 / アクリル</span>
+        <strong>人々</strong><br>
+        <span class="small">2016 / アクリル</span>
         <div class="meta">
           <span class="badge price">¥8000</span>
         </div>
       </article>
-      <!-- 以降、同じ要領で .thumb に data-en-alt/data-en-caption、テキストに data-en を加えるだけ -->
+      <!-- 以降、同じ要領で .thumb に data-caption と data-en-* を加えるだけ -->
     </div>
   </section>
 
@@ -397,66 +408,73 @@
     </ul>
 
     <!-- 注意書き＋余白 -->
-    <p class="research-note small" style="margin-bottom: 1rem;"
-       data-en="For main achievements, please see researchmap or ORCiD.">
-       主な業績に関してはresearchmap又はORCiDをご覧ください。
-    </p>
+    <p class="research-note small" style="margin-bottom: 1rem;">主な業績に関してはresearchmap又はORCiDをご覧ください。</p>
 
     <!-- 研究カード（Art Worksと同サイズのカード＆グリッド） -->
     <div class="grid research-grid">
-      <article class="card">
+      <article class="card"
+        data-en-title="Spoke as the graduate student representative at the Nagoya University School of Science introduction"
+        data-en-small="2024-08-09 / There seems to be an archive somewhere on YouTube.">
         <img class="thumb" src="assets/research-001.jpg"
              alt="NU"
              data-caption="名古屋大学理学部紹介に大学院生の代表として登壇 / 2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。"
              data-en-alt="NU"
              data-en-caption="Spoke as the graduate student representative at the Nagoya Univ. School of Science introduction / 2024-08-09 / There seems to be an archive somewhere on YouTube.">
-        <strong data-en="Spoke as the graduate student representative at the Nagoya University School of Science introduction">名古屋大学理学部紹介に大学院生の代表として登壇</strong><br>
-        <span class="small" data-en="2024-08-09 / There seems to be an archive somewhere on YouTube.">2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。</span>
-        <div class="meta"><span class="badge sold" data-en="Open Campus">オープンキャンパス</span></div>
+        <strong>名古屋大学理学部紹介に大学院生の代表として登壇</strong><br>
+        <span class="small">2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。</span>
+        <div class="meta"><span class="badge sold" data-en-text="Open Campus">オープンキャンパス</span></div>
       </article>
 
-      <article class="card">
+      <article class="card"
+        data-en-title="Organized Mikai-2 (junior study meeting)"
+        data-en-small="2024-06-28 / Sincere thanks to everyone who participated—especially the presenters.">
         <img class="thumb" src="assets/research-002.jpg"
              alt="Mikai-2"
              data-caption="Mikai-2の主催 / 2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。"
              data-en-alt="Mikai-2"
              data-en-caption="Organized Mikai-2 / 2024-06-28 / Many thanks to all participants.">
-        <strong data-en="Organized Mikai-2 (junior study meeting)">若手勉強会 Mikai-2 を主催</strong><br>
-        <span class="small" data-en="2024-06-28 / Sincere thanks to everyone who participated—especially the presenters.">2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
-        <div class="meta"><span class="badge price" data-en="Organizer">主催</span></div>
+        <strong>若手勉強会 Mikai-2 を主催</strong><br>
+        <span class="small">2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
+        <div class="meta"><span class="badge price" data-en-text="Organizer">主催</span></div>
       </article>
 
-      <article class="card">
+      <article class="card"
+        data-en-title="Participated in iSWS2024; received a poster prize"
+        data-en-small="2024-03-13 / Thank you for a wonderful study meeting.">
         <img class="thumb" src="assets/research-003.jpg"
              alt="iSWS2024"
              data-caption="iSWS2024に参加・ポスター賞受賞 / 2024-03-13 / 楽しい勉強会をありがとうございます。"
              data-en-alt="iSWS2024"
              data-en-caption="Participated in iSWS2024; won a poster prize / 2024-03-13 / Thank you for a wonderful study meeting.">
-        <strong data-en="Participated in iSWS2024; received a poster prize">iSWS2024に参加・ポスター賞受賞</strong><br>
-        <span class="small" data-en="2024-03-13 / Thank you for a wonderful study meeting.">2024-03-13 / 楽しい勉強会をありがとうございます。</span>
-        <div class="meta"><span class="badge sold" data-en="Student activity">学生活動</span></div>
+        <strong>iSWS2024に参加・ポスター賞受賞</strong><br>
+        <span class="small">2024-03-13 / 楽しい勉強会をありがとうございます。</span>
+        <div class="meta"><span class="badge sold" data-en-text="Student activity">学生活動</span></div>
       </article>
 
-      <article class="card">
+      <article class="card"
+        data-en-title="Organized Mikai (junior study meeting)"
+        data-en-small="2023-11-17 / Sincere thanks to everyone who participated—especially the presenters.">
         <img class="thumb" src="assets/research-004.jpg"
              alt="Mikai"
              data-caption="Mikaiの主催 / 2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。"
              data-en-alt="Mikai"
              data-en-caption="Organized Mikai / 2023-11-17 / Many thanks to all participants.">
-        <strong data-en="Organized Mikai (junior study meeting)">若手勉強会 Mikai を主催</strong><br>
-        <span class="small" data-en="2023-11-17 / Sincere thanks to everyone who participated—especially the presenters.">2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
-        <div class="meta"><span class="badge price" data-en="Organizer">主催</span></div>
+        <strong>若手勉強会 Mikai を主催</strong><br>
+        <span class="small">2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
+        <div class="meta"><span class="badge price" data-en-text="Organizer">主催</span></div>
       </article>
 
-      <article class="card">
+      <article class="card"
+        data-en-title="Lunch with Kentaro Noma"
+        data-en-small="2021-11-20 / I finally ate something other than instant noodles. Thank you very much.">
         <img class="thumb" src="assets/research-005.jpg"
              alt="Noma"
              data-caption="Kentaro Nomaとの昼食 / 2021-11-20 / 久しぶりにインスタント麺以外を口にした。本当にありがとうございます。"
              data-en-alt="Noma"
              data-en-caption="Lunch with Kentaro Noma / 2021-11-20 / Thank you very much.">
-        <strong data-en="Lunch with Kentaro Noma">Kentaro Nomaとの昼食</strong><br>
-        <span class="small" data-en="2021-11-20 / I finally ate something other than instant noodles. Thank you very much.">2021-11-20 / 久しぶりにインスタント麺以外を口にした。本当にありがとうございます。</span>
-        <div class="meta"><span class="badge sold" data-en="Just a memory">ただの思い出</span></div>
+        <strong>Kentaro Nomaとの昼食</strong><br>
+        <span class="small">2021-11-20 / 久しぶりにインスタント麺以外を口にした。本当にありがとうございます。</span>
+        <div class="meta"><span class="badge sold" data-en-text="Just a memory">ただの思い出</span></div>
       </article>
 
       <!-- 奇数埋め用プレースホルダー（PCのみ表示。JSで必要時にshow付与） -->
@@ -469,17 +487,17 @@
   <section id="cv">
     <h2>CV</h2>
     <ul>
-      <li data-en="2022: B.Sc., School of Science, Nagoya University">2022：理学士　名古屋大学理学部</li>
-      <li data-en="2024: M.Sc., Graduate School of Science, Nagoya University">2024：理学修士　名古屋大学大学院理学研究科</li>
-      <li data-en="2024–Present: Ph.D. Program, Graduate School of Science, Nagoya University">2024-Present：博士課程後期　名古屋大学大学院理学研究科</li>
+      <li>2022：理学士　名古屋大学理学部</li>
+      <li>2024：理学修士　名古屋大学大学院理学研究科</li>
+      <li>2024-Present：博士課程後期　名古屋大学大学院理学研究科</li>
     </ul>
   </section>
 
   <section id="contact">
     <h2>Contact</h2>
     <p>e-mail：<a href="mailto:riqbk@mbox.re" style="color:var(--accent)">riqbk@mbox.re</a></p>
-    <p class="small" data-lang="ja">絵の受注生産承ります。絵の内容について要望はお聞きしますが、要望の反映は保証されません。価格は要相談。スパムメール防止のため、メールアドレスは捨てアドレスです。返信が遅い場合はNoma Worm Labへご連絡ください。</p>
-    <p class="small" data-lang="en">Commissions open. Requests considered but not guaranteed. Pricing: case by case. The listed email is a disposable alias to prevent spam; if my reply is slow, please reach out to Noma Worm Lab.</p>
+    <p class="small">絵の受注生産承ります。絵の内容について要望はお聞きしますが、要望の反映は保証されません。価格は要相談。スパムメール防止のため、メールアドレスは捨てアドレスです。返信が遅い場合はNoma Worm Labへご連絡ください。</p>
+    <p class="small">Commissions open. Requests considered but not guaranteed. Pricing: case by case. The listed email is a disposable alias to prevent spam; if my reply is slow, please reach out to Noma Worm Lab.</p>
   </section>
 </main>
 
@@ -507,13 +525,13 @@
   const capEl = document.getElementById('lightboxCaption');
   const btnClose = document.getElementById('lightboxClose');
   const btnPrev = document.getElementById('lbPrev');
-  const btnNext = document.getElementById('lbNext');
+  const btnNext = document.getElementById('lbNext'); // ← タイポ修正済み
   const mql = window.matchMedia('(max-width: 640px)');
 
   let current = -1; // 現在表示中のインデックス
   let touchStartX = 0, touchEndX = 0;
 
-  // 各thumbにアクセシビリティとイベント
+  // アクセシビリティ：各thumbにキーボード操作を付与
   thumbs.forEach((img, idx) => {
     img.setAttribute('tabindex','0');
     img.setAttribute('role','button');
@@ -529,7 +547,7 @@
   function openAt(index){
     current = index;
     const t = thumbs[current];
-    show(t.src, t.getAttribute('alt') || '', t.dataset.caption || '');
+    show(t.src, t.alt, t.dataset.caption || '');
     lightbox.classList.add('open');
     document.body.classList.add('no-scroll');
     btnClose.focus();
@@ -553,14 +571,14 @@
     if(thumbs.length === 0) return;
     current = (current + 1) % thumbs.length;
     const t = thumbs[current];
-    show(t.src, t.getAttribute('alt') || '', t.dataset.caption || '');
+    show(t.src, t.alt, t.dataset.caption || '');
   }
 
   function prev(){
     if(thumbs.length === 0) return;
     current = (current - 1 + thumbs.length) % thumbs.length;
     const t = thumbs[current];
-    show(t.src, t.getAttribute('alt') || '', t.dataset.caption || '');
+    show(t.src, t.alt, t.dataset.caption || '');
   }
 
   // ボタン操作（モバイルでは無効）
@@ -570,7 +588,7 @@
     btnPrev.addEventListener('click', prev);
   }
   mql.addEventListener('change', e => {
-    // 画面幅に応じてイベントの付け外し
+    // 画面幅に応じてイベントの付け外し（挙動は従来通り、構成不変）
     if(e.matches){
       btnNext.replaceWith(btnNext.cloneNode(true));
       btnPrev.replaceWith(btnPrev.cloneNode(true));
@@ -611,7 +629,7 @@
   }, {passive:true});
   lightbox.addEventListener('touchend', () => {
     const dx = touchEndX - touchStartX;
-    const threshold = 50;
+    const threshold = 50; // スワイプ判定しきい値
     if(Math.abs(dx) > threshold){
       if(dx < 0){ next(); } else { prev(); }
     }
@@ -666,6 +684,7 @@
 
       for (let i = 0; i < needed; i++) {
         const ph = document.createElement('article');
+        // ★ 本修正：クラスを正しく付与（スペース区切り）
         ph.classList.add('card', 'placeholder');
         ph.setAttribute('aria-hidden', 'true');
         ph.innerHTML = '<div class="placeholder-thumb" aria-hidden="true"></div>';
@@ -681,44 +700,171 @@
 })();
 </script>
 
-<!-- ▼▼ langパラメータ処理 + アクティブ表示 + i18n適用 ▼▼ -->
+<!-- ▼▼ langパラメータ処理 + アクティブ表示 ▼▼ -->
 <script>
 (() => {
-  // 言語判定
   const params = new URLSearchParams(window.location.search);
-  const langParam = (params.get('lang') || '').toLowerCase();
-  const lang = (langParam === 'en' || langParam === 'ja') ? langParam : 'ja';
-  document.documentElement.setAttribute('lang', lang);
-
-  // 言語スイッチのactive表示
-  document.querySelectorAll('.lang-switch a[data-lang]').forEach(a => {
-    a.classList.toggle('active', a.dataset.lang === lang);
+  const lang = (params.get('lang') || '').toLowerCase();
+  if (lang === 'ja' || lang === 'en') {
+    document.documentElement.setAttribute('lang', lang);
+  }
+  // active 表示
+  const links = document.querySelectorAll('.lang-switch a[data-lang]');
+  links.forEach(a => {
+    if (a.dataset.lang === (lang || 'ja')) a.classList.add('active');
   });
-
-  // テキスト要素（data-en）を一括置換
-  const applyLanguage = (lang) => {
-    // プレーンテキストの置換
-    document.querySelectorAll('[data-en]').forEach(el => {
-      if (!el.dataset.ja) el.dataset.ja = el.textContent;
-      el.textContent = (lang === 'en') ? el.dataset.en : el.dataset.ja;
-    });
-
-    // 画像メタ（alt / data-caption）の置換
-    document.querySelectorAll('[data-en-alt], [data-en-caption]').forEach(img => {
-      if (img.dataset.jaAlt === undefined)  img.dataset.jaAlt = img.getAttribute('alt') || '';
-      if (img.dataset.jaCaption === undefined) img.dataset.jaCaption = img.dataset.caption || '';
-      const alt = (lang === 'en') ? (img.dataset.enAlt ?? img.dataset.jaAlt) : img.dataset.jaAlt;
-      const cap = (lang === 'en') ? (img.dataset.enCaption ?? img.dataset.jaCaption) : img.dataset.jaCaption;
-      img.setAttribute('alt', alt);
-      if (cap !== undefined) img.dataset.caption = cap;
-    });
-    // Contact は CSS の [data-lang] で出し分け（JS制御不要）
-  };
-
-  applyLanguage(lang);
 })();
 </script>
-<!-- ▲▲ ここまで ▲▲ -->
+
+<!-- ▼▼ 置換方法：番号依存を廃止し、カード内 data を読む ▼▼ -->
+<script>
+(() => {
+  const lang = document.documentElement.getAttribute('lang') || 'ja';
+  const $ = sel => document.querySelector(sel);
+
+  // 既存のユーティリティ（セレクタ版）
+  const setText = (sel, text) => {
+    const el = $(sel);
+    if (!el) return;
+    if (!el.dataset.origText) el.dataset.origText = el.textContent;
+    el.textContent = text;
+  };
+  const resetText = sel => {
+    const el = $(sel);
+    if (!el || !el.dataset.origText) return;
+    el.textContent = el.dataset.origText;
+  };
+
+  // 新規：要素参照での適用（番号不要）
+  const setNodeText = (el, text) => {
+    if (!el || typeof text !== 'string') return;
+    if (!el.dataset.origText) el.dataset.origText = el.textContent;
+    el.textContent = text;
+  };
+  const resetNodeText = (el) => {
+    if (!el || el.dataset.origText === undefined) return;
+    el.textContent = el.dataset.origText;
+  };
+  const setImgMetaNode = (img, { alt, caption }) => {
+    if (!img) return;
+    if (img.dataset.origAlt === undefined) img.dataset.origAlt = img.getAttribute('alt') || '';
+    if (img.dataset.origCap === undefined) img.dataset.origCap = img.dataset.caption || '';
+    if (typeof alt === 'string') img.setAttribute('alt', alt);
+    if (typeof caption === 'string') img.dataset.caption = caption;
+  };
+  const resetImgMetaNode = (img) => {
+    if (!img) return;
+    if (img.dataset.origAlt !== undefined) img.setAttribute('alt', img.dataset.origAlt);
+    if (img.dataset.origCap !== undefined) img.dataset.caption = img.dataset.origCap;
+  };
+
+  function applyEN(){
+    /* ===== Art Works ヒント（固定文言） ===== */
+    setText('#artworks .hint-desktop', 'Click an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
+    setText('#artworks .hint-mobile',  'Tap an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
+
+    /* ===== Art Works カード：番号依存なし ===== */
+    document.querySelectorAll('#artworks .grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const smallEl = card.querySelector('.small');
+      const img = card.querySelector('.thumb');
+      if (card.dataset.enTitle) setNodeText(titleEl, card.dataset.enTitle);
+      if (card.dataset.enSmall) setNodeText(smallEl, card.dataset.enSmall);
+      if (img) {
+        setImgMetaNode(img, {
+          alt: img.dataset.enAlt,
+          caption: img.dataset.enCaption
+        });
+      }
+      // （必要時）バッジ英語化
+      card.querySelectorAll('.meta .badge').forEach(b => {
+        if (b.dataset.enText) setNodeText(b, b.dataset.enText);
+      });
+    });
+
+    /* ===== Research 注意書き（固定文言） ===== */
+    setText('#research .research-note', 'For main achievements, please see researchmap or ORCiD.');
+
+    /* ===== Research カード：番号依存なし ===== */
+    document.querySelectorAll('#research .research-grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const smallEl = card.querySelector('.small');
+      const img = card.querySelector('.thumb');
+      if (card.dataset.enTitle) setNodeText(titleEl, card.dataset.enTitle);
+      if (card.dataset.enSmall) setNodeText(smallEl, card.dataset.enSmall);
+      if (img) {
+        setImgMetaNode(img, {
+          alt: img.dataset.enAlt,
+          caption: img.dataset.enCaption
+        });
+      }
+      const badge = card.querySelector('.meta .badge');
+      if (badge && badge.dataset.enText) setNodeText(badge, badge.dataset.enText);
+    });
+
+    /* ===== CV（従来どおり固定3行） ===== */
+    setText('#cv ul li:nth-of-type(1)', '2022: B.Sc., School of Science, Nagoya University');
+    setText('#cv ul li:nth-of-type(2)', '2024: M.Sc., Graduate School of Science, Nagoya University');
+    setText('#cv ul li:nth-of-type(3)', '2024–Present: Ph.D. Program, Graduate School of Science, Nagoya University');
+
+    /* ===== Contact：日本語文を隠し、英語文を表示 ===== */
+    const smallParas = document.querySelectorAll('#contact p.small');
+    const jp = smallParas[0];
+    const en = smallParas[1];
+    if (jp) jp.style.display = 'none';
+    if (en) en.style.display = '';
+  }
+
+  function resetJA(){
+    // Art Works hints
+    resetText('#artworks .hint-desktop');
+    resetText('#artworks .hint-mobile');
+
+    // Art Works cards
+    document.querySelectorAll('#artworks .grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const smallEl = card.querySelector('.small');
+      const img = card.querySelector('.thumb');
+      resetNodeText(titleEl);
+      resetNodeText(smallEl);
+      resetImgMetaNode(img);
+      card.querySelectorAll('.meta .badge').forEach(b => resetNodeText(b));
+    });
+
+    // Research
+    resetText('#research .research-note');
+    document.querySelectorAll('#research .research-grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const smallEl = card.querySelector('.small');
+      const img = card.querySelector('.thumb');
+      resetNodeText(titleEl);
+      resetNodeText(smallEl);
+      resetImgMetaNode(img);
+      const badge = card.querySelector('.meta .badge');
+      if (badge) resetNodeText(badge);
+    });
+
+    // CV
+    resetText('#cv ul li:nth-of-type(1)');
+    resetText('#cv ul li:nth-of-type(2)');
+    resetText('#cv ul li:nth-of-type(3)');
+
+    // Contact：日本語のみ表示（メールは常に表示）
+    const smallParas = document.querySelectorAll('#contact p.small');
+    const jp = smallParas[0];
+    const en = smallParas[1];
+    if (jp) jp.style.display = '';
+    if (en) en.style.display = 'none';
+  }
+
+  if (lang === 'en'){
+    applyEN();
+  }else{
+    resetJA();
+  }
+})();
+</script>
+<!-- ▲▲ 追加ここまで ▲▲ -->
 
 </body>
 </html>
