@@ -233,7 +233,7 @@ header nav > div:nth-of-type(2){
   }
 }
 
-  /* Contact：日本語時は英語段落（3つ目の <p>）を隠す。英語時は日本語段落（2つ目）を隠す */
+/* Contact：日本語時は英語段落（3つ目の <p>）を隠す。英語時は日本語段落（2つ目）を隠す */
 #contact p.small:nth-of-type(3){display:none}
 html[lang="en"] #contact p.small:nth-of-type(2){display:none}
 html[lang="en"] #contact p.small:nth-of-type(3){display:block}
@@ -284,117 +284,103 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
 
     <div class="grid">
       <!-- 作品カード 1 -->
-      <article class="card"
-        data-en-title="Bouquet"
-        data-en-small="2025 / Acrylic — Prior research">
+      <article class="card">
         <img class="thumb" src="assets/artwork-003.jpg"
              alt="花束"
              data-caption="花束 / 2025 / アクリル — これまでの研究"
              data-en-alt="Bouquet"
              data-en-caption="Bouquet / 2025 / Acrylic — Prior research">
-        <strong>花束</strong><br>
-        <span class="small">2025 / アクリル — これまでの研究</span>
+        <strong data-en-title="Bouquet">花束</strong><br>
+        <span class="small" data-en-meta="2025 / Acrylic — Prior research">2025 / アクリル — これまでの研究</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
       
       <!-- 作品カード 2 -->
-      <article class="card"
-        data-en-title="Clenched Under a Cloudy Sky"
-        data-en-small="2025 / Acrylic">
+      <article class="card">
         <img class="thumb" src="assets/artwork-004.jpg"
              alt="曇り空に握りしめて"
              data-caption="曇り空に握りしめて / 2025 / アクリル"
              data-en-alt="Clenched Under a Cloudy Sky"
              data-en-caption="Clenched Under a Cloudy Sky / 2025 / Acrylic">
-        <strong>曇り空に握りしめて</strong><br>
-        <span class="small">2025 / アクリル</span>
+        <strong data-en-title="Clenched Under a Cloudy Sky">曇り空に握りしめて</strong><br>
+        <span class="small" data-en-meta="2025 / Acrylic">2025 / アクリル</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
 
       <!-- 作品カード 3 -->
-      <article class="card"
-        data-en-title="Nomatode Sculpture"
-        data-en-small="2025 / Hinoki cypress">
+      <article class="card">
         <img class="thumb" src="assets/artwork-001.jpg"
              alt="野間トードの彫刻"
              data-caption="野間トードの彫刻 / 2025 / 檜"
              data-en-alt="Nomatode Sculpture"
              data-en-caption="Nomatode Sculpture / 2025 / Hinoki cypress">
-        <strong>野間トードの彫刻</strong><br>
-        <span class="small">2025 / 檜</span>
+        <strong data-en-title="Nomatode Sculpture">野間トードの彫刻</strong><br>
+        <span class="small" data-en-meta="2025 / Hinoki cypress">2025 / 檜</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
 
       <!-- 作品カード 4 -->
-      <article class="card"
-        data-en-title="Self-portrait"
-        data-en-small="2025 / Acrylic">
+      <article class="card">
         <img class="thumb" src="assets/artwork-005.jpg"
              alt="自画像"
              data-caption="自画像 / 2025 / アクリル"
              data-en-alt="Self-portrait"
              data-en-caption="Self-portrait / 2025 / Acrylic">
-        <strong>自画像</strong><br>
-        <span class="small">2025 / アクリル</span>
+        <strong data-en-title="Self-portrait">自画像</strong><br>
+        <span class="small" data-en-meta="2025 / Acrylic">2025 / アクリル</span>
         <div class="meta">
           <span class="badge price">¥ASK</span>
         </div>
       </article>
 
       <!-- 作品カード 5 -->
-      <article class="card"
-        data-en-title="Lotus"
-        data-en-small="2022 / Acrylic">
+      <article class="card">
         <img class="thumb" src="assets/artwork-006.jpg"
              alt="蓮の花"
              data-caption="蓮の花 / 2022 / アクリル"
              data-en-alt="Lotus"
              data-en-caption="Lotus / 2022 / Acrylic">
-        <strong>蓮の花</strong><br>
-        <span class="small">2022 / アクリル</span>
+        <strong data-en-title="Lotus">蓮の花</strong><br>
+        <span class="small" data-en-meta="2022 / Acrylic">2022 / アクリル</span>
         <div class="meta">
           <span class="badge sold">SOLD OUT</span>
         </div>
       </article>
 
       <!-- 作品カード 6 -->
-      <article class="card"
-        data-en-title="Giants’ Textbook"
-        data-en-small="2018 / Acrylic">
+      <article class="card">
         <img class="thumb" src="assets/artwork-007.jpg"
              alt="巨人の教科書"
              data-caption="巨人の教科書 / 2018 / アクリル"
              data-en-alt="Giants’ Textbook"
              data-en-caption="Giants’ Textbook / 2018 / Acrylic">
-        <strong>巨人の教科書</strong><br>
-        <span class="small">2018 / アクリル</span>
+        <strong data-en-title="Giants’ Textbook">巨人の教科書</strong><br>
+        <span class="small" data-en-meta="2018 / Acrylic">2018 / アクリル</span>
         <div class="meta">
           <span class="badge sold">LOST</span>
         </div>
       </article>
 
       <!-- 作品カード 7 -->
-      <article class="card"
-        data-en-title="People"
-        data-en-small="2016 / Acrylic — People in motion, their scenes and backgrounds.">
+      <article class="card">
         <img class="thumb" src="assets/artwork-002.jpg"
              alt="人々"
              data-caption="人々 / 2016 / アクリル — 人々の歩行中、その景色と背景。"
              data-en-alt="People"
              data-en-caption="People / 2016 / Acrylic — People in motion, their scenes and backgrounds.">
-        <strong>人々</strong><br>
-        <span class="small">2016 / アクリル</span>
+        <strong data-en-title="People">人々</strong><br>
+        <span class="small" data-en-meta="2016 / Acrylic — People in motion, their scenes and backgrounds.">2016 / アクリル — 人々の歩行中、その景色と背景。</span>
         <div class="meta">
           <span class="badge price">¥8000</span>
         </div>
       </article>
-      <!-- 以降、同じ要領で .thumb に data-caption を加えるだけ -->
+      <!-- 以降、追加カードも同様に data-en-* を埋めるだけ -->
     </div>
   </section>
 
@@ -412,69 +398,59 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
 
     <!-- 研究カード（Art Worksと同サイズのカード＆グリッド） -->
     <div class="grid research-grid">
-      <article class="card"
-        data-en-title="Spoke as the graduate student representative at the Nagoya University School of Science introduction"
-        data-en-small="2024-08-09 / There seems to be an archive somewhere on YouTube.">
+      <article class="card">
         <img class="thumb" src="assets/research-001.jpg"
              alt="NU"
              data-caption="名古屋大学理学部紹介に大学院生の代表として登壇 / 2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。"
              data-en-alt="NU"
              data-en-caption="Spoke as the graduate student representative at the Nagoya Univ. School of Science introduction / 2024-08-09 / There seems to be an archive somewhere on YouTube.">
-        <strong>名古屋大学理学部紹介に大学院生の代表として登壇</strong><br>
-        <span class="small">2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。</span>
-        <div class="meta"><span class="badge sold" data-en-text="Open Campus">オープンキャンパス</span></div>
+        <strong data-en-title="Spoke as the graduate student representative at the Nagoya University School of Science introduction">名古屋大学理学部紹介に大学院生の代表として登壇</strong><br>
+        <span class="small" data-en-meta="2024-08-09 / There seems to be an archive somewhere on YouTube.">2024-08-09 / Youtubeのどこかにアーカイブがあるらしい。</span>
+        <div class="meta"><span class="badge sold" data-en-badge="Open Campus">オープンキャンパス</span></div>
       </article>
 
-      <article class="card"
-        data-en-title="Organized Mikai-2 (junior study meeting)"
-        data-en-small="2024-06-28 / Sincere thanks to everyone who participated—especially the presenters.">
+      <article class="card">
         <img class="thumb" src="assets/research-002.jpg"
              alt="Mikai-2"
              data-caption="Mikai-2の主催 / 2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。"
              data-en-alt="Mikai-2"
              data-en-caption="Organized Mikai-2 / 2024-06-28 / Many thanks to all participants.">
-        <strong>若手勉強会 Mikai-2 を主催</strong><br>
-        <span class="small">2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
-        <div class="meta"><span class="badge price" data-en-text="Organizer">主催</span></div>
+        <strong data-en-title="Organized Mikai-2 (junior study meeting)">若手勉強会 Mikai-2 を主催</strong><br>
+        <span class="small" data-en-meta="2024-06-28 / Sincere thanks to everyone who participated—especially the presenters.">2024-06-28 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
+        <div class="meta"><span class="badge price" data-en-badge="Organizer">主催</span></div>
       </article>
 
-      <article class="card"
-        data-en-title="Participated in iSWS2024; received a poster prize"
-        data-en-small="2024-03-13 / Thank you for a wonderful study meeting.">
+      <article class="card">
         <img class="thumb" src="assets/research-003.jpg"
              alt="iSWS2024"
              data-caption="iSWS2024に参加・ポスター賞受賞 / 2024-03-13 / 楽しい勉強会をありがとうございます。"
              data-en-alt="iSWS2024"
              data-en-caption="Participated in iSWS2024; won a poster prize / 2024-03-13 / Thank you for a wonderful study meeting.">
-        <strong>iSWS2024に参加・ポスター賞受賞</strong><br>
-        <span class="small">2024-03-13 / 楽しい勉強会をありがとうございます。</span>
-        <div class="meta"><span class="badge sold" data-en-text="Student activity">学生活動</span></div>
+        <strong data-en-title="Participated in iSWS2024; received a poster prize">iSWS2024に参加・ポスター賞受賞</strong><br>
+        <span class="small" data-en-meta="2024-03-13 / Thank you for a wonderful study meeting.">2024-03-13 / 楽しい勉強会をありがとうございます。</span>
+        <div class="meta"><span class="badge sold" data-en-badge="Student activity">学生活動</span></div>
       </article>
 
-      <article class="card"
-        data-en-title="Organized Mikai (junior study meeting)"
-        data-en-small="2023-11-17 / Sincere thanks to everyone who participated—especially the presenters.">
+      <article class="card">
         <img class="thumb" src="assets/research-004.jpg"
              alt="Mikai"
              data-caption="Mikaiの主催 / 2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。"
              data-en-alt="Mikai"
              data-en-caption="Organized Mikai / 2023-11-17 / Many thanks to all participants.">
-        <strong>若手勉強会 Mikai を主催</strong><br>
-        <span class="small">2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
-        <div class="meta"><span class="badge price" data-en-text="Organizer">主催</span></div>
+        <strong data-en-title="Organized Mikai (junior study meeting)">若手勉強会 Mikai を主催</strong><br>
+        <span class="small" data-en-meta="2023-11-17 / Sincere thanks to everyone who participated—especially the presenters.">2023-11-17 / 参加していただいた皆様には本当に感謝しています。ありがとう。発表者は特にありがとうございます。</span>
+        <div class="meta"><span class="badge price" data-en-badge="Organizer">主催</span></div>
       </article>
 
-      <article class="card"
-        data-en-title="Lunch with Kentaro Noma"
-        data-en-small="2021-11-20 / I finally ate something other than instant noodles. Thank you very much.">
+      <article class="card">
         <img class="thumb" src="assets/research-005.jpg"
              alt="Noma"
              data-caption="Kentaro Nomaとの昼食 / 2021-11-20 / 久しぶりにインスタント麺以外を口にした。本当にありがとうございます。"
              data-en-alt="Noma"
              data-en-caption="Lunch with Kentaro Noma / 2021-11-20 / Thank you very much.">
-        <strong>Kentaro Nomaとの昼食</strong><br>
-        <span class="small">2021-11-20 / 久しぶりにインスタント麺以外を口にした。本当にありがとうございます。</span>
-        <div class="meta"><span class="badge sold" data-en-text="Just a memory">ただの思い出</span></div>
+        <strong data-en-title="Lunch with Kentaro Noma">Kentaro Nomaとの昼食</strong><br>
+        <span class="small" data-en-meta="2021-11-20 / I finally ate something other than instant noodles. Thank you very much.">2021-11-20 / 久しぶりにインスタント麺以外を口にした。本当にありがとうございます。</span>
+        <div class="meta"><span class="badge sold" data-en-badge="Just a memory">ただの思い出</span></div>
       </article>
 
       <!-- 奇数埋め用プレースホルダー（PCのみ表示。JSで必要時にshow付与） -->
@@ -525,7 +501,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
   const capEl = document.getElementById('lightboxCaption');
   const btnClose = document.getElementById('lightboxClose');
   const btnPrev = document.getElementById('lbPrev');
-  const btnNext = document.getElementById('lbNext'); // ← タイポ修正済み
+  const btnNext = document.getElementById('lbNext');
   const mql = window.matchMedia('(max-width: 640px)');
 
   let current = -1; // 現在表示中のインデックス
@@ -588,7 +564,6 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     btnPrev.addEventListener('click', prev);
   }
   mql.addEventListener('change', e => {
-    // 画面幅に応じてイベントの付け外し（挙動は従来通り、構成不変）
     if(e.matches){
       btnNext.replaceWith(btnNext.cloneNode(true));
       btnPrev.replaceWith(btnPrev.cloneNode(true));
@@ -629,7 +604,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
   }, {passive:true});
   lightbox.addEventListener('touchend', () => {
     const dx = touchEndX - touchStartX;
-    const threshold = 50; // スワイプ判定しきい値
+    const threshold = 50;
     if(Math.abs(dx) > threshold){
       if(dx < 0){ next(); } else { prev(); }
     }
@@ -661,7 +636,7 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     const getColumnCount = () => {
       const cs = window.getComputedStyle(grid);
       const cols = cs.gridTemplateColumns.trim().split(/\s+/).filter(Boolean);
-      return cols.length || 3; // フォールバック3（見た目は変えない）
+      return cols.length || 3; // フォールバック3
     };
 
     const makePlaceholders = () => {
@@ -684,7 +659,6 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
 
       for (let i = 0; i < needed; i++) {
         const ph = document.createElement('article');
-        // ★ 本修正：クラスを正しく付与（スペース区切り）
         ph.classList.add('card', 'placeholder');
         ph.setAttribute('aria-hidden', 'true');
         ph.innerHTML = '<div class="placeholder-thumb" aria-hidden="true"></div>';
@@ -716,11 +690,12 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
 })();
 </script>
 
-<!-- ▼▼ 追加：i18n（既存HTMLは触らず、EN時のみ置換） ▼▼ -->
+<!-- ▼▼ 追加：i18n（Art Works と Research を順番非依存に） ▼▼ -->
 <script>
 (() => {
   const lang = document.documentElement.getAttribute('lang') || 'ja';
   const $ = sel => document.querySelector(sel);
+
   const setHTML = (sel, html) => {
     const el = $(sel);
     if (!el) return;
@@ -743,88 +718,155 @@ html[lang="en"] #contact p.small:nth-of-type(3){display:block}
     if (!el || !el.dataset.origText) return;
     el.textContent = el.dataset.origText;
   };
-  const setImgMeta = (sel, { alt, caption }) => {
-    const el = $(sel);
-    if (!el) return;
-    if (!el.dataset.origAlt) el.dataset.origAlt = el.getAttribute('alt') || '';
-    if (!el.dataset.origCap) el.dataset.origCap = el.dataset.caption || '';
-    if (typeof alt === 'string') el.setAttribute('alt', alt);
-    if (typeof caption === 'string') el.dataset.caption = caption;
+
+  const setImgMeta = (imgEl, { alt, caption }) => {
+    if (!imgEl) return;
+    if (!imgEl.dataset.origAlt) imgEl.dataset.origAlt = imgEl.getAttribute('alt') || '';
+    if (!imgEl.dataset.origCap) imgEl.dataset.origCap = imgEl.dataset.caption || '';
+    if (typeof alt === 'string') imgEl.setAttribute('alt', alt);
+    if (typeof caption === 'string') imgEl.dataset.caption = caption;
   };
-  const resetImgMeta = sel => {
-    const el = $(sel);
-    if (!el) return;
-    if (el.dataset.origAlt !== undefined) el.setAttribute('alt', el.dataset.origAlt);
-    if (el.dataset.origCap !== undefined) el.dataset.caption = el.dataset.origCap;
+  const resetImgMeta = (imgEl) => {
+    if (!imgEl) return;
+    if (imgEl.dataset.origAlt !== undefined) imgEl.setAttribute('alt', imgEl.dataset.origAlt);
+    if (imgEl.dataset.origCap !== undefined) imgEl.dataset.caption = imgEl.dataset.origCap;
   };
 
-  function applyEN(){
-    /* ===== Art Works ヒント ===== */
+  /* ===== Art Works：順番依存を排除 ===== */
+  function applyEN_Artworks(){
+    // ヒント
     setText('#artworks .hint-desktop', 'Click an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
     setText('#artworks .hint-mobile',  'Tap an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
 
+    document.querySelectorAll('#artworks .grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const metaEl  = card.querySelector('.small');
+      const imgEl   = card.querySelector('.thumb');
 
+      if (titleEl && titleEl.dataset.enTitle){
+        if (!titleEl.dataset.origText) titleEl.dataset.origText = titleEl.textContent;
+        titleEl.textContent = titleEl.dataset.enTitle;
+      }
+      if (metaEl && metaEl.dataset.enMeta){
+        if (!metaEl.dataset.origText) metaEl.dataset.origText = metaEl.textContent;
+        metaEl.textContent = metaEl.dataset.enMeta;
+      }
+      if (imgEl){
+        setImgMeta(imgEl, {
+          alt: imgEl.dataset.enAlt ?? null,
+          caption: imgEl.dataset.enCaption ?? null
+        });
+      }
+    });
+  }
 
-    /* ===== Research 注意書き ===== */
+  function resetJA_Artworks(){
+    resetText('#artworks .hint-desktop');
+    resetText('#artworks .hint-mobile');
+
+    document.querySelectorAll('#artworks .grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const metaEl  = card.querySelector('.small');
+      const imgEl   = card.querySelector('.thumb');
+
+      if (titleEl && titleEl.dataset.origText !== undefined){
+        titleEl.textContent = titleEl.dataset.origText;
+      }
+      if (metaEl && metaEl.dataset.origText !== undefined){
+        metaEl.textContent = metaEl.dataset.origText;
+      }
+      resetImgMeta(imgEl);
+    });
+  }
+
+  /* ===== Research：順番依存を排除 ===== */
+  function applyEN_Research(){
+    // 注意書きはセレクタ固定でOK（順番依存ではない）
     setText('#research .research-note', 'For main achievements, please see researchmap or ORCiD.');
 
-  
-    /* ===== CV ===== */
+    document.querySelectorAll('#research .research-grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const metaEl  = card.querySelector('.small');
+      const imgEl   = card.querySelector('.thumb');
+      const badgeEl = card.querySelector('.meta .badge');
+
+      if (titleEl && titleEl.dataset.enTitle){
+        if (!titleEl.dataset.origText) titleEl.dataset.origText = titleEl.textContent;
+        titleEl.textContent = titleEl.dataset.enTitle;
+      }
+      if (metaEl && metaEl.dataset.enMeta){
+        if (!metaEl.dataset.origText) metaEl.dataset.origText = metaEl.textContent;
+        metaEl.textContent = metaEl.dataset.enMeta;
+      }
+      if (badgeEl && badgeEl.dataset.enBadge){
+        if (!badgeEl.dataset.origText) badgeEl.dataset.origText = badgeEl.textContent;
+        badgeEl.textContent = badgeEl.dataset.enBadge;
+      }
+      if (imgEl){
+        setImgMeta(imgEl, {
+          alt: imgEl.dataset.enAlt ?? null,
+          caption: imgEl.dataset.enCaption ?? null
+        });
+      }
+    });
+  }
+
+  function resetJA_Research(){
+    resetText('#research .research-note');
+
+    document.querySelectorAll('#research .research-grid > article.card:not(.placeholder)').forEach(card => {
+      const titleEl = card.querySelector('strong');
+      const metaEl  = card.querySelector('.small');
+      const imgEl   = card.querySelector('.thumb');
+      const badgeEl = card.querySelector('.meta .badge');
+
+      if (titleEl && titleEl.dataset.origText !== undefined){
+        titleEl.textContent = titleEl.dataset.origText;
+      }
+      if (metaEl && metaEl.dataset.origText !== undefined){
+        metaEl.textContent = metaEl.dataset.origText;
+      }
+      if (badgeEl && badgeEl.dataset.origText !== undefined){
+        badgeEl.textContent = badgeEl.dataset.origText;
+      }
+      resetImgMeta(imgEl);
+    });
+  }
+
+  function applyEN(){
+    applyEN_Artworks();
+    applyEN_Research();
+
+    /* CV */
     setText('#cv ul li:nth-of-type(1)', '2022: B.Sc., School of Science, Nagoya University');
     setText('#cv ul li:nth-of-type(2)', '2024: M.Sc., Graduate School of Science, Nagoya University');
     setText('#cv ul li:nth-of-type(3)', '2024–Present: Ph.D. Program, Graduate School of Science, Nagoya University');
 
-    /* ===== Contact：言語別段落の表示切替（メールは常に表示） ===== */
+    /* Contact（日英段落切替） */
     const smallParas = document.querySelectorAll('#contact p.small');
-    const jp = smallParas[0];
-    const en = smallParas[1];
+    const jp = smallParas[0]; const en = smallParas[1];
     if (jp) jp.style.display = 'none';
     if (en) en.style.display = '';
   }
 
   function resetJA(){
-    // Art Works hints
-    resetText('#artworks .hint-desktop');
-    resetText('#artworks .hint-mobile');
+    resetJA_Artworks();
+    resetJA_Research();
 
-    // Art cards
-    for (let i=1;i<=7;i++){
-      resetText(`#artworks .grid > article.card:nth-of-type(${i}) strong`);
-      resetText(`#artworks .grid > article.card:nth-of-type(${i}) .small`);
-      resetImgMeta(`#artworks .grid > article.card:nth-of-type(${i}) .thumb`);
-    }
-
-    // Research
-    resetText('#research .research-note');
-    for (let i=1;i<=5;i++){
-      resetText(`#research .research-grid > article.card:nth-of-type(${i}) strong`);
-      resetText(`#research .research-grid > article.card:nth-of-type(${i}) .small`);
-      const badge = document.querySelector(`#research .research-grid > article.card:nth-of-type(${i}) .meta .badge`);
-      if (badge && badge.dataset.origText) badge.textContent = badge.dataset.origText;
-      resetImgMeta(`#research .research-grid > article.card:nth-of-type(${i}) .thumb`);
-    }
-
-    // CV
     resetText('#cv ul li:nth-of-type(1)');
     resetText('#cv ul li:nth-of-type(2)');
     resetText('#cv ul li:nth-of-type(3)');
 
-    // Contact：日本語のみ表示（メールは常に表示）
     const smallParas = document.querySelectorAll('#contact p.small');
-    const jp = smallParas[0];
-    const en = smallParas[1];
+    const jp = smallParas[0]; const en = smallParas[1];
     if (jp) jp.style.display = '';
     if (en) en.style.display = 'none';
   }
 
-  if (lang === 'en'){
-    applyEN();
-  }else{
-    resetJA();
-  }
+  if (lang === 'en'){ applyEN(); } else { resetJA(); }
 })();
 </script>
-<!-- ▲▲ 追加ここまで ▲▲ -->
+<!-- ▲▲ ここまで ▲▲ -->
 
 </body>
 </html>
