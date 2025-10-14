@@ -457,7 +457,7 @@ header nav > div:nth-of-type(2){
   const capEl = document.getElementById('lightboxCaption');
   const btnClose = document.getElementById('lightboxClose');
   const btnPrev = document.getElementById('lbPrev');
-  const btnNext = document.getElementById('lbNext');
+  const btnNext = document.getElementById('lbNext']);
   const mql = window.matchMedia('(max-width: 640px)');
 
   let current = -1; // 現在表示中のインデックス
@@ -602,7 +602,7 @@ header nav > div:nth-of-type(2){
 
       for (let i = 0; i < needed; i++) {
         const ph = document.createElement('article');
-        ph.className = 'card placeholder';
+        ph.className = 'card.placeholder';
         ph.setAttribute('aria-hidden', 'true');
         ph.innerHTML = '<div class="placeholder-thumb" aria-hidden="true"></div>';
         grid.appendChild(ph);
@@ -681,55 +681,42 @@ header nav > div:nth-of-type(2){
     setText('#artworks .hint-mobile',  'Tap an image to view it full-size with a caption. For purchase inquiries, please contact me via Contact.');
 
     /* ===== Art Works カード ===== */
-    // 1
     setText('#artworks .grid > article.card:nth-of-type(1) strong', 'Bouquet');
     setText('#artworks .grid > article.card:nth-of-type(1) .small',  '2025 / Acrylic — Prior research');
     setImgMeta('#artworks .grid > article.card:nth-of-type(1) .thumb', {
       alt: 'Bouquet',
       caption: 'Bouquet / 2025 / Acrylic — Prior research'
     });
-
-    // 2
     setText('#artworks .grid > article.card:nth-of-type(2) strong', 'Clenched Under a Cloudy Sky');
     setText('#artworks .grid > article.card:nth-of-type(2) .small',  '2025 / Acrylic');
     setImgMeta('#artworks .grid > article.card:nth-of-type(2) .thumb', {
       alt: 'Clenched Under a Cloudy Sky',
       caption: 'Clenched Under a Cloudy Sky / 2025 / Acrylic'
     });
-
-    // 3
     setText('#artworks .grid > article.card:nth-of-type(3) strong', 'Noma Toad Sculpture');
     setText('#artworks .grid > article.card:nth-of-type(3) .small',  '2025 / Hinoki cypress');
     setImgMeta('#artworks .grid > article.card:nth-of-type(3) .thumb', {
       alt: 'Noma Toad Sculpture',
       caption: 'Noma Toad Sculpture / 2025 / Hinoki cypress'
     });
-
-    // 4
     setText('#artworks .grid > article.card:nth-of-type(4) strong', 'Self-portrait');
     setText('#artworks .grid > article.card:nth-of-type(4) .small',  '2025 / Acrylic');
     setImgMeta('#artworks .grid > article.card:nth-of-type(4) .thumb', {
       alt: 'Self-portrait',
       caption: 'Self-portrait / 2025 / Acrylic'
     });
-
-    // 5
     setText('#artworks .grid > article.card:nth-of-type(5) strong', 'Lotus');
     setText('#artworks .grid > article.card:nth-of-type(5) .small',  '2022 / Acrylic');
     setImgMeta('#artworks .grid > article.card:nth-of-type(5) .thumb', {
       alt: 'Lotus',
       caption: 'Lotus / 2022 / Acrylic'
     });
-
-    // 6
     setText('#artworks .grid > article.card:nth-of-type(6) strong', 'Giants’ Textbook');
     setText('#artworks .grid > article.card:nth-of-type(6) .small',  '2018 / Acrylic');
     setImgMeta('#artworks .grid > article.card:nth-of-type(6) .thumb', {
       alt: 'Giants’ Textbook',
       caption: 'Giants’ Textbook / 2018 / Acrylic'
     });
-
-    // 7
     setText('#artworks .grid > article.card:nth-of-type(7) strong', 'People');
     setText('#artworks .grid > article.card:nth-of-type(7) .small',  '2016 / Acrylic');
     setImgMeta('#artworks .grid > article.card:nth-of-type(7) .thumb', {
@@ -741,7 +728,6 @@ header nav > div:nth-of-type(2){
     setText('#research .research-note', 'Mainly student activities are listed. For official achievements, please see researchmap or ORCiD.');
 
     /* ===== Research カード ===== */
-    // 1
     setText('#research .research-grid > article.card:nth-of-type(1) strong',
       'Spoke as the graduate student representative at the Nagoya University School of Science introduction');
     setText('#research .research-grid > article.card:nth-of-type(1) .small',
@@ -751,8 +737,6 @@ header nav > div:nth-of-type(2){
       alt: 'NU',
       caption: 'Spoke as the graduate student representative at the Nagoya Univ. School of Science introduction / 2024-08-09 / There seems to be an archive somewhere on YouTube.'
     });
-
-    // 2
     setText('#research .research-grid > article.card:nth-of-type(2) strong',
       'Organized Mikai-2 (junior study meeting)');
     setText('#research .research-grid > article.card:nth-of-type(2) .small',
@@ -762,8 +746,6 @@ header nav > div:nth-of-type(2){
       alt: 'Mikai-2',
       caption: 'Organized Mikai-2 / 2024-06-28 / Many thanks to all participants.'
     });
-
-    // 3
     setText('#research .research-grid > article.card:nth-of-type(3) strong',
       'Participated in iSWS2024; received a poster prize');
     setText('#research .research-grid > article.card:nth-of-type(3) .small',
@@ -773,8 +755,6 @@ header nav > div:nth-of-type(2){
       alt: 'iSWS2024',
       caption: 'Participated in iSWS2024; won a poster prize / 2024-03-13 / Thank you for a wonderful study meeting.'
     });
-
-    // 4
     setText('#research .research-grid > article.card:nth-of-type(4) strong',
       'Organized Mikai (junior study meeting)');
     setText('#research .research-grid > article.card:nth-of-type(4) .small',
@@ -784,8 +764,6 @@ header nav > div:nth-of-type(2){
       alt: 'Mikai',
       caption: 'Organized Mikai / 2023-11-17 / Many thanks to all participants.'
     });
-
-    // 5
     setText('#research .research-grid > article.card:nth-of-type(5) strong',
       'Lunch with Kentaro Noma');
     setText('#research .research-grid > article.card:nth-of-type(5) .small',
@@ -801,9 +779,10 @@ header nav > div:nth-of-type(2){
     setText('#cv ul li:nth-of-type(2)', '2024: M.Sc., Graduate School of Science, Nagoya University');
     setText('#cv ul li:nth-of-type(3)', '2024–Present: Ph.D. Program, Graduate School of Science, Nagoya University');
 
-    /* ===== Contact：言語別段落の表示切替 ===== */
-    const jp = document.querySelector('#contact p.small:nth-of-type(2)')?.previousElementSibling; // 日本語の説明段落
-    const en = document.querySelector('#contact p.small:nth-of-type(2)'); // 英語の説明段落
+    /* ===== Contact：言語別段落の表示切替（メールは常に表示） ===== */
+    const smallParas = document.querySelectorAll('#contact p.small');
+    const jp = smallParas[0];
+    const en = smallParas[1];
     if (jp) jp.style.display = 'none';
     if (en) en.style.display = '';
   }
@@ -835,11 +814,12 @@ header nav > div:nth-of-type(2){
     resetText('#cv ul li:nth-of-type(2)');
     resetText('#cv ul li:nth-of-type(3)');
 
-    // Contact 段落表示を元に（両方表示の元仕様を維持）
-    const jp = document.querySelector('#contact p.small:nth-of-type(2)')?.previousElementSibling;
-    const en = document.querySelector('#contact p.small:nth-of-type(2)');
+    // Contact：日本語のみ表示（メールは常に表示）
+    const smallParas = document.querySelectorAll('#contact p.small');
+    const jp = smallParas[0];
+    const en = smallParas[1];
     if (jp) jp.style.display = '';
-    if (en) en.style.display = '';
+    if (en) en.style.display = 'none';
   }
 
   if (lang === 'en'){
